@@ -5,7 +5,16 @@ const routes: Routes = [
   {
     path:"",
     loadChildren:()=> import("./home/home.module").then(mod=>mod.HomeModule)
+  },
+  {
+    path:"auth",
+    loadChildren:()=> import("./auth/auth.module").then(mod=>mod.AuthModule)
   }
+  // ,
+  // {
+  //   path:"sing-up",
+  //   loadChildren:()=> import("./auth/auth.module").then(mod=>mod.AuthModule)
+  // }
 ];
 
 @NgModule({

@@ -1,12 +1,6 @@
-.title {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 50px;
-  font-weight: 500;
+h1 {
+  font-size: 28px;
 }
-
 .link {
   text-decoration: none;
   font-size: 20px;
@@ -23,4 +17,8 @@
   position: absolute;
   top: 2%;
   right: 5%;
+}
+
+.toolbar {
+  background-color: dodgerblue;
 }
