@@ -7,6 +7,7 @@
         <mat-form-field>
             <input matInput type="password" placeholder="Password" formControlName="password" required>
         </mat-form-field>
+        
         <button mat-button class="button" [disabled]="form.invalid" (click)="login(form)">Login</button>
     </form>
 </div>

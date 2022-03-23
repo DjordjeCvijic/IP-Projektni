@@ -1,1 +1,28 @@
-<p>sign-up works!</p>
+<div class="sing-up-div">
+    <h1>Enter your data</h1>
+    <form class="sing-up-form" [formGroup]="form">
+        <mat-form-field >
+            <input matInput type="text" placeholder="First name" formControlName="firstName" required>
+        </mat-form-field>
+         <mat-form-field >
+            <input matInput type="text" placeholder="Last name" formControlName="lastName" required>
+        </mat-form-field>
+        <mat-form-field >
+            <input matInput type="text" placeholder="Username" formControlName="username" required>
+        </mat-form-field>
+        <mat-form-field >
+            <input matInput type="email" placeholder="Email" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field >
+            <input matInput type="password" placeholder="Password" formControlName="firstPassword" required>
+        </mat-form-field>
+        <mat-form-field >
+            <input matInput type="password" placeholder="Repete password" formControlName="secondPassword" required>
+        </mat-form-field> 
+        <button class="button" mat-button [disabled]="form.invalid" (click)="singUp(form)">Sing up</button>
+       
+          
+    </form>
+
+
+</div>

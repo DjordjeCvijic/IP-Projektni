@@ -1,0 +1,22 @@
+.sing-up-div {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 34%;
+  transform: translate(-50%, -50%);
+
+  width: 300px;
+}
+
+.sing-up-form {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.button {
+  background-color: dodgerblue;
+  margin-top: 20px;
+}
