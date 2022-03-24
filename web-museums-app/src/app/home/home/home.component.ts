@@ -9,8 +9,6 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-  public homeTitle: string="Welcome to Web Museums"
-
   ngOnInit(): void {
   }
 

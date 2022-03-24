@@ -1,0 +1,26 @@
+.title {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 20px;
+  padding: 30px;
+  color: black;
+  font-weight: 500;
+}
+
+.link:hover {
+  color: yellow;
+}
+
+.links {
+  position: absolute;
+  top: 2%;
+  right: 5%;
+}
