@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ipproject.WebMuseums.config.UserDetailsServiceImpl;
 import com.ipproject.WebMuseums.dto.UserPersonDto;
+import com.ipproject.WebMuseums.dto.UserPersonResponseDto;
 import com.ipproject.WebMuseums.model.AuthenticationRequest;
 import com.ipproject.WebMuseums.model.AuthenticationResponse;
 import com.ipproject.WebMuseums.model.UserPerson;
@@ -64,8 +65,8 @@ public class AuthController {
 	 
 	 
 	 @PostMapping("/registration")
-	    public UserPerson saveUserPerson(@RequestBody UserPersonDto requestBody) {
-		 System.out.println(requestBody.getEmail());
+	    public UserPersonResponseDto saveUserPerson(@RequestBody UserPersonDto requestBody) {
+		
 	        return userPersonService.saveUserPerson(requestBody);
 	    }
 

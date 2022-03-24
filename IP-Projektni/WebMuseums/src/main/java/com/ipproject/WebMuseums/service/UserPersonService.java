@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ipproject.WebMuseums.compositekey.UserPersonRoleKey;
 import com.ipproject.WebMuseums.dto.UserPersonDto;
+import com.ipproject.WebMuseums.dto.UserPersonResponseDto;
 import com.ipproject.WebMuseums.model.Role;
 import com.ipproject.WebMuseums.model.UserPerson;
 import com.ipproject.WebMuseums.model.UserPersonRole;
@@ -31,18 +32,35 @@ public class UserPersonService {
 		return userPersonRepository.findByUsername(username);
 	}
 
-    public UserPerson saveUserPerson(UserPersonDto userPersonDto) {
-        UserPerson user = userPersonRepository.save(buildUserFromDto(userPersonDto));
+    public UserPersonResponseDto saveUserPerson(UserPersonDto userPersonDto) {
+    	if(userPersonRepository.countByUsername(userPersonDto.getUsername())!=0) {
+    		return new UserPersonResponseDto("2");
+    	}
+    	if(userPersonRepository.countByEmail(userPersonDto.getEmail())!=0) {
+    		return new UserPersonResponseDto("3");
+    	}
+        UserPerson savedUser = userPersonRepository.save(buildUserFromDto(userPersonDto));
+        Integer userRoleId=2;//registrovati se mogu samo obicni korisnici
+        UserPersonRoleKey key = new UserPersonRoleKey(savedUser.getUserPersonId(), userRoleId);
+        Role role = roleRepository.getById(userRoleId);
+        userPersonRoleRepository.save(new UserPersonRole(key, savedUser, role));
         
-     Integer userRoleId=2;
-            UserPersonRoleKey key = new UserPersonRoleKey(user.getUserPersonId(), userRoleId);//1 ce biti id od admina
-            Role role = roleRepository.getById(userRoleId);
-            userPersonRoleRepository.save(new UserPersonRole(key, user, role));
+        return buildUserToReply(savedUser);
         
-
-
-        return user;
     }
+
+	private UserPersonResponseDto buildUserToReply(UserPerson savedUser) {
+		UserPersonResponseDto user=new UserPersonResponseDto();
+		user.setStatus("1");
+		user.setActive(true);
+		user.setEmail(savedUser.getEmail());
+		user.setFirstName(savedUser.getEmail());
+		user.setLastName(savedUser.getLastName());
+		user.setPassword(savedUser.getPassword());
+		user.setUsername(savedUser.getUsername());
+		user.setUserPersonId(savedUser.getUserPersonId());
+		return user;
+	}
 
 	private UserPerson buildUserFromDto(UserPersonDto userPersonDto) {
 		UserPerson userPerson = new UserPerson();

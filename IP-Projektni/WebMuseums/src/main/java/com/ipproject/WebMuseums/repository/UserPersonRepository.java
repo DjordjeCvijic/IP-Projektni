@@ -11,5 +11,7 @@ import com.ipproject.WebMuseums.model.UserPerson;
 public interface UserPersonRepository extends JpaRepository<UserPerson, Integer>{
 
 	Optional<UserPerson> findByUsername(String username);
+	long countByUsername(String username); 
+	long countByEmail(String email);
 
 }

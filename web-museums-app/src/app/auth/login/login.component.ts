@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder,
     private snackBar:MatSnackBar,
+    private authService:AuthService
     ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
         duration: 2000
       });
     }
-  
+    this.authService.login(form.value.username,form.value.password);
 
 
   }
