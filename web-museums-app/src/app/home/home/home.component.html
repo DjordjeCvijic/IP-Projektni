@@ -4,3 +4,8 @@
         <a routerLink="" class="link"  (click)="logout()">Log out</a>
       </mat-toolbar-row>
   </mat-toolbar>
+<h1>asdas</h1>
+  <div style="padding: 15px" *ngFor="let element of museums">
+    <app-museum-item  [museum]="element"></app-museum-item>
+    
+  </div>

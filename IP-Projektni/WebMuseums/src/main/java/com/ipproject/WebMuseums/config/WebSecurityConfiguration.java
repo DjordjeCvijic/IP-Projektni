@@ -25,13 +25,12 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter{
     @Autowired
     JwtRequestFilter jwtRequestFilter;
     
-    String[] adminPermissionsList = {"/movie-people/**", "/content/**"};
-//  String[] userPermissionsList = {"/content","/content/movie-by-genre"};
+  String[] adminPermissionsList = {"/movie-people/**", "/content/**"};
   String[] userPermissionsList = {"/test/user","/test/user-id","/content/movie-by-genre"};
   String[] userAndAminPermissionsList = {"/content-comment/**", "/review/**", "/genre/getAll",
           "/user-person/update-info"};
   String[] swaggerPermissionsList = {"/swagger-ui/*", "/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**"};
-  String[] permissionsForAllList = {"/auth/**","/test","/auth/login"};
+  String[] permissionsForAllList = {"/auth/**","/test","/auth/login","/museum"};
 
   // authentication
   @Override
@@ -49,9 +48,8 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter{
               .csrf().disable()
               .authorizeRequests()
               .antMatchers(permissionsForAllList).permitAll()
-              .antMatchers("/swagger-resources/**").permitAll()
+//              .antMatchers("/swagger-resources/**").permitAll()
               .antMatchers(swaggerPermissionsList).permitAll()
-              
               .antMatchers(adminPermissionsList).hasRole("ADMIN")
               .antMatchers(userPermissionsList).hasAnyRole("USER")
               .antMatchers(userAndAminPermissionsList).hasAnyRole("USER", "ADMIN")

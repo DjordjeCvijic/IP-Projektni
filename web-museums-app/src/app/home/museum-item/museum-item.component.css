@@ -1,0 +1,15 @@
+.card {
+  /* width: 90%; */
+  background-color: rgb(125, 183, 240);
+}
+
+.card-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+
+button {
+  background-color: dodgerblue;
+}
