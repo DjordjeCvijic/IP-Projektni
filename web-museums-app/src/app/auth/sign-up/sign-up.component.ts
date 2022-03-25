@@ -34,8 +34,9 @@ export class SignUpComponent implements OnInit {
   public singUp(form:any){
     if(form.value.firstPassword!=form.value.secondPassword){
       this.snackBar.open("Lozinke nisu iste",undefined,{duration:2000})
-    }
-    this.authService.singUp(form.value.firstName,form.value.lastName,form.value.username,form.value.email,form.value.firstPassword).subscribe({
+    }else{
+      
+      this.authService.singUp(form.value.firstName,form.value.lastName,form.value.username,form.value.email,form.value.firstPassword).subscribe({
       next:data=>{
         if(data.status=="2"){
           this.snackBar.open("korisnicko ime postoji",undefined,{duration:2000})
@@ -46,7 +47,8 @@ export class SignUpComponent implements OnInit {
           this.router.navigate(["auth/login"]);
         }
       }
-    })
+    })}
+    
 
   
   }

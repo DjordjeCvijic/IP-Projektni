@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AppConst } from 'src/app/app_const';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,12 @@ export class AuthService {
 
 
   public login(username:String,password:String){
-    console.log(username)
+    const body={
+      username:username,
+      password:password
+    }
+
+    return this.http.post<any>(AppConst.API_ENDPOINT+"/auth/login",body);
   }
   
 
@@ -24,21 +30,20 @@ export class AuthService {
     };
     
    return this.http.post<any>('http://localhost:1123/auth/registration',body);
-    // .subscribe({
-    //   next: data => {
+   
+  }
+  public logOut(){
+    localStorage.removeItem(AppConst.TOKEN_STORAGE_KEY);
+  }
 
-    //     console.log("radi");
-    //     console.log(data.toString());
-    //     console.log(data.status);
-    //     console.log(data.opis);
-    //   },
-    //   error: error => {
-    //     console.log("greska se desila");
-    //     console.log(error.message.toString());
-        
-    //   }
-    // })
+  public saveUserTokenToLocalStorage(token:string){
+    localStorage.setItem(AppConst.TOKEN_STORAGE_KEY,token);
+  }
 
+  public getUserTokenFromLocalStorage(){
+    var token=localStorage.getItem(AppConst.TOKEN_STORAGE_KEY);
+    
+    return token;
   }
 
 }

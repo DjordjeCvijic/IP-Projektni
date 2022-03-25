@@ -1,0 +1,20 @@
+h1 {
+  font-size: 28px;
+}
+
+.toolbar {
+  background-color: dodgerblue;
+}
+.link {
+  position: absolute;
+  right: 5%;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 30px;
+  color: black;
+  font-weight: 500;
+}
+
+.link:hover {
+  color: yellow;
+}

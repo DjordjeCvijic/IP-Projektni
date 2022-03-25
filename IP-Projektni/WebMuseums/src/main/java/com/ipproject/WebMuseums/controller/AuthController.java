@@ -45,7 +45,7 @@ public class AuthController {
 	
 	
 	 @PostMapping( "/login")
-	    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
+	    public AuthenticationResponse createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
 	            throws Exception {
 		
 	        try {
@@ -54,13 +54,14 @@ public class AuthController {
 	           
 	            SecurityContextHolder.getContext().setAuthentication(authentication);
 	        } catch (BadCredentialsException ex) {
-	            return new ResponseEntity<String>("Pogrešni kredencijali!", HttpStatus.BAD_REQUEST);
+//	            return new ResponseEntity<String>("Pogrešni kredencijali!", HttpStatus.BAD_REQUEST);
+	        	return new AuthenticationResponse("2", ex.getMessage());
 	        }
 
 	        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 	        final String jwt = jwtUtil.generateToken(userDetails);
-
-	        return new ResponseEntity<AuthenticationResponse>(new AuthenticationResponse(jwt), HttpStatus.OK);
+	        return new AuthenticationResponse("1",jwt);
+//	        return new ResponseEntity<AuthenticationResponse>(new AuthenticationResponse(jwt), HttpStatus.OK);
 	    }
 	 
 	 
