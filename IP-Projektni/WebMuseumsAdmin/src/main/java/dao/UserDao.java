@@ -14,7 +14,7 @@ public class UserDao {
 	public static UserDto getUserByToken(String token) {
 		
 		UserDto user=new UserDto();
-		Connection conn=DBConnection.connect();
+		Connection conn=DBConnection.getConnection();
 		
 		try {
 			//dohvatanje korisnika
@@ -55,7 +55,7 @@ public class UserDao {
 
 		         rs.close();
 		         pstmt.close();
-		         conn.close();
+		         
 		        
 		         
 		} catch (SQLException e) {

@@ -10,7 +10,7 @@ public class RoleDao {
 	
 	public static RoleDto getRoleById(Integer roleId) {
 		RoleDto resultRole=new RoleDto();
-		Connection conn=DBConnection.connect();
+		Connection conn=DBConnection.getConnection();
 		try {
 			 PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM role WHERE role_id=?");
 			 pstmt.setInt(1, roleId);
@@ -21,7 +21,7 @@ public class RoleDao {
 		         }
 		         rs.close();
 		         pstmt.close();
-		         conn.close();
+		         
 			
 		} catch (Exception e) {
 			e.printStackTrace();

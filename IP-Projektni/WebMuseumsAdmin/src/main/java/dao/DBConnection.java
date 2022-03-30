@@ -9,10 +9,10 @@ public class DBConnection {
 	private final static String url = "jdbc:postgresql://localhost:5432/web_museums_db";
 	private final static String user = "postgres";
 	private final static String password = "postgres";
-	
+	private static Connection connection=null;
 	
 
-    public static Connection connect() {
+    private static Connection connect() {
         Connection conn = null;
         try {
         	Class.forName("org.postgresql.Driver");
@@ -26,6 +26,14 @@ public class DBConnection {
 		}
 
         return conn;
+    }
+    
+    public static Connection getConnection() {
+    	if(connection==null) {
+    		connection= connect();
+    	}
+    	return connection;
+    	
     }
 
 }
