@@ -33,7 +33,11 @@ export class AuthService {
    
   }
   public logOut(){
+    const body=this.getUserTokenFromLocalStorage();
+    console.log("token ",body);
+    this.http.post<any>(AppConst.API_ENDPOINT+"/auth/log-out",body).subscribe({});
     localStorage.removeItem(AppConst.TOKEN_STORAGE_KEY);
+    console.log("token ",body);
   }
 
   public saveUserTokenToLocalStorage(token:string){

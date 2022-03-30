@@ -42,6 +42,9 @@ public class UserPerson {
 
     @Column(name = "active",nullable = false)
     private boolean active=true;
+    
+    @Column(name="token")
+    private String token;
 
 	
     

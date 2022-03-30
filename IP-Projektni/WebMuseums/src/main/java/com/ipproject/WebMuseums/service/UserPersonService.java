@@ -72,8 +72,23 @@ public class UserPersonService {
         userPerson.setUsername(userPersonDto.getUsername());
         userPerson.setPassword(passwordEncoder.encode(userPersonDto.getPassword()));
         userPerson.setEmail(userPersonDto.getEmail());
+        userPerson.setToken("");
 
         return userPerson;
+	}
+
+	public void saveToken(String username, String jwt) {
+		UserPerson userPerson=userPersonRepository.findByUsername(username).get();
+		userPerson.setToken(jwt);
+		userPersonRepository.save(userPerson);
+		
+	}
+	
+	public void logOutUser(String token) {
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@   usao u logout@@@@@@@@@@@@@@@@@@@@@@");
+		UserPerson user=userPersonRepository.findByToken(token).get();
+		user.setToken("");
+		userPersonRepository.save(user);
 	}
 	
 	

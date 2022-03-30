@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { AppConst } from 'src/app/app_const';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Museum } from 'src/app/model/museum.model';
 import { MuseumService } from '../services/museum.service';
@@ -30,14 +31,12 @@ export class HomeComponent implements OnInit {
     
   }
 
-
   public logout(){
-   
     this.authService.logOut();
     this.snackBar.open("izlogovani ste",undefined,{duration:2000})
   }
   public openAdminApp(){
-    window.open("http://localhost:8080/WebMuseumsAdmin", "_blank");
+    window.open(AppConst.ADMIN_APP_URL+"?token="+this.authService.getUserTokenFromLocalStorage(), "_blank");
   }
 
 }
