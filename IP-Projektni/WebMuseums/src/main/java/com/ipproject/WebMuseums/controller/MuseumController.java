@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipproject.WebMuseums.dto.MuseumResponseDto;
-import com.ipproject.WebMuseums.model.Museum;
 import com.ipproject.WebMuseums.service.MuseumService;
 
 @RestController

@@ -5,16 +5,22 @@ h1 {
 .toolbar {
   background-color: dodgerblue;
 }
-.link {
-  position: absolute;
-  right: 5%;
+.toolbar-link,
+.logout-link {
+  margin-left: 100px;
+  cursor: default;
   text-decoration: none;
   font-size: 20px;
-  padding: 30px;
   color: black;
   font-weight: 500;
 }
 
-.link:hover {
+.logout-link {
+  position: absolute;
+  right: 5%;
+}
+
+.toolbar-link:hover,
+.logout-link:hover {
   color: yellow;
 }

@@ -36,5 +36,8 @@ export class HomeComponent implements OnInit {
     this.authService.logOut();
     this.snackBar.open("izlogovani ste",undefined,{duration:2000})
   }
+  public openAdminApp(){
+    window.open("http://localhost:8080/WebMuseumsAdmin", "_blank");
+  }
 
 }
