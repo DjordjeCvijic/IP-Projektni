@@ -1,6 +1,6 @@
-function getCountres(){
+function getCountry(){
 	var request=new XMLHttpRequest();
-	console.log("usao u get coutry");
+
     request.onreadystatechange=function(){
         if((request.readyState==4)&&(request.status==200)){
             var result=JSON.parse(request.responseText);
@@ -21,17 +21,17 @@ function getCountres(){
 
 }
 
-function getRegions(){
+function getRegion(){
     selectedCountry = document.getElementById("country_select").value;
    console.log("usao u get refion od zemlje",selectedCountry);
 
    var request=new XMLHttpRequest();
    request.onreadystatechange=function(){
        if((request.readyState==4)&&(request.status==200)){
-           var result=JSON.parse(request.responseText);
+           var result=JSON.parse(request.responseText)
 
            var select=document.getElementById("region_select");
-			select.innerHTML = ""
+        
            result.forEach(element => {
                var option=document.createElement("option");
                option.value=element.region;
@@ -45,7 +45,4 @@ function getRegions(){
    request.send(null);
 
    
-}
-
-function getCites(){
 }
