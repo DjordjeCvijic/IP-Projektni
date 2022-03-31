@@ -1,6 +1,7 @@
 <%@ page import="service.UserService" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <jsp:useBean id="userBean" class="beans.UserBean" scope="session"></jsp:useBean>
     
     
@@ -9,9 +10,13 @@
 	if(request.getParameter("token")!=null){
 		userBean=UserService.getUserBeanByToken(request.getParameter("token"));
 		if(userBean.isAdmin()){
+			System.out.println("dosao");
 			userBean.setLogedIn(true);
-			response.sendRedirect("museums.jsp");
+			System.out.println("stanje 1: "+userBean.isLogedIn());
+			response.sendRedirect("admin-home.jsp");
+			
 		}else{
+			userBean.setLogedIn(false);
 			response.sendRedirect("unauthorized.jsp");
 		}
 		

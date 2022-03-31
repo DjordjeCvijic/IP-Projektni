@@ -1,0 +1,35 @@
+table {
+	font-family: arial, sans-serif;
+  	border-collapse: collapse;
+  	width: 100%;
+}
+
+td, th {
+  	border: 1px solid #000000;
+  	text-align: left;
+ 	 padding: 8px;
+}
+
+tr:nth-child(even) {
+  	background-color: #dddddd;
+}
+p {
+	font-family: arial, sans-serif;
+	font-size:30px;
+	margin: 10px;
+}
+
+.main-div{
+	position: relative;
+	top:130px;
+}
+.header-div{
+	display: flex;
+	flex-direction: row;
+	justify-content:space-between;
+	align-items: center;
+}
+.btn{
+	height:30px;
+	
+}

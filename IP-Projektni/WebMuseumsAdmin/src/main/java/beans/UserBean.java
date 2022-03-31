@@ -9,6 +9,7 @@ public class UserBean implements Serializable{
 	
 	private boolean admin;
 	private boolean logedIn;
+	
 	public boolean isLogedIn() {
 		return logedIn;
 	}
