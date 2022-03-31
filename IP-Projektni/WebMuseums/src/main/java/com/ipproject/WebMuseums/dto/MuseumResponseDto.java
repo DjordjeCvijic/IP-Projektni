@@ -24,7 +24,7 @@ public class MuseumResponseDto {
 	private Integer museumId;
 	private String name;
 	private String address;
-	private long phoneNumber;
+	private String phoneNumber;
 	private String countryName;
 	private String cityName;
 	private String latitude;

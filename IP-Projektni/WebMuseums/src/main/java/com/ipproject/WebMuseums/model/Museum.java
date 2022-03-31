@@ -38,7 +38,7 @@ public class Museum {
 	private String address;
 	
 	@Column(name="phone_number")
-	private long phoneNumber;
+	private String phoneNumber;
 	
 	@Column(name="country_name")
 	private String countryName;
