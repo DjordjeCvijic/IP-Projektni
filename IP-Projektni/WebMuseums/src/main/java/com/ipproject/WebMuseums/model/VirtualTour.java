@@ -32,6 +32,9 @@ public class VirtualTour {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer virtualTourId;
 	
+	@Column(name="name")
+	private String name;
+	
 	@Column(name = "start_date_time")
 	private LocalDateTime startDateTime;
 	
@@ -42,7 +45,6 @@ public class VirtualTour {
 	private String youtubeUrl;
 	
 	@ManyToOne
-	@MapsId("museumId")
 	@JoinColumn(name="museum_id", nullable = false)
 	private Museum museum;
 	

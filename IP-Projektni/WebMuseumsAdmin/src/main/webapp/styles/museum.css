@@ -1,0 +1,40 @@
+p {
+	font-family: arial, sans-serif;
+	font-size:30px;
+	margin: 10px;
+}
+
+.main-div{
+	position: relative;
+	top:80px;
+}
+.header-div{
+	display: flex;
+	flex-direction: row;
+	justify-content:space-between;
+	align-items: center;
+}
+.list-div{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.element-div{
+	background-color:#e1e1e1;
+	margin:8px;
+	width: 250px;
+	border: solid;
+	
+	border-radius:10px;
+	border-width: 1px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.btn{
+	height:30px;
+	margin: 8px;
+}
+h4{
+	margin-block-end:0em;
+}

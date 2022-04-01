@@ -9,4 +9,3 @@ function addMuseum(){
 	window.location.assign("add-museum.jsp");
 
 }
-fun
