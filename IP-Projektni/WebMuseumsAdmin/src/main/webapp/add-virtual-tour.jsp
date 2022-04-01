@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@page import="service.VirtualTourService" %>
     
  <jsp:useBean id="virtualTourBean" class="beans.VirtualTourBean" scope="request"></jsp:useBean>
  <jsp:setProperty property="name" name="virtualTourBean" param="name"/>
@@ -8,32 +9,33 @@
  
 <!DOCTYPE html>
 <%
-	if(request.getParameter("cancel")!=null){
-		response.sendRedirect("museum.jsp");
-	}
-if(request.getParameter("submit")!=null){
 
-	if(("".equals(request.getParameter("name")))
-			||"".equals(request.getParameter("duration"))
-			||"".equals(request.getParameter("youtubeUrl"))
-			||"".equals(request.getParameter("date"))
-			||"".equals(request.getParameter("time"))){
-		session.setAttribute("message", "sva polja nisu unesena");
-	}else{
-		String dateTime=request.getParameter("date")+"T"+request.getParameter("time");
-		virtualTourBean.setStartDateTime(dateTime);
-		session.setAttribute("message", "");
-		System.out.println(virtualTourBean.getName());
-		System.out.println(virtualTourBean.getDuration());
-		System.out.println(virtualTourBean.getYoutubeUrl());
-		System.out.println(virtualTourBean.getStartDateTime());
-		
-		
+	if(request.getParameter("cancel")!=null){
+		response.sendRedirect("museum.jsp?id="+request.getParameter("museumId"));
 	}
+	if(request.getParameter("submit")!=null){
 	
-}else{
-	session.setAttribute("message", "");
-}
+		if(("".equals(request.getParameter("name")))
+				||"".equals(request.getParameter("duration"))
+				||"".equals(request.getParameter("youtubeUrl"))
+				||"".equals(request.getParameter("date"))
+				||"".equals(request.getParameter("time"))){
+			session.setAttribute("message", "sva polja nisu unesena");
+		}else{
+			String dateTime=request.getParameter("date")+" "+request.getParameter("time")+":00";
+			virtualTourBean.setStartDateTime(dateTime);
+			session.setAttribute("message", "");
+			System.out.println(virtualTourBean.getName());
+			System.out.println(virtualTourBean.getDuration());
+			System.out.println(virtualTourBean.getYoutubeUrl());
+			System.out.println(virtualTourBean.getStartDateTime());
+			VirtualTourService.saveVirtualTour(virtualTourBean, request.getParameter("museumId"));
+			response.sendRedirect("museum.jsp?id="+request.getParameter("museumId"));
+		}
+		
+	}else{
+		session.setAttribute("message", "");
+	}
 
 
 %>
@@ -45,7 +47,7 @@ if(request.getParameter("submit")!=null){
 <body>
 <div class="main-div">
 	<h2>Enter data of new virtual tour</h2>
-	<form action='add-virtual-tour.jsp?museumId="+<%=request.getParameter("museumId") %>+"'" method="POST">
+	<form action="add-virtual-tour.jsp?museumId=<%=request.getParameter("museumId") %>" method="POST">
 		<label >Virtual tour name:</label>
 		<input type="text" name="name" />
 		<label >Virtual tour duration:</label>
@@ -58,7 +60,7 @@ if(request.getParameter("submit")!=null){
 		<input type="time" name="time" />
 		
 		<input type="submit" name="submit" value="Add museum"/>
-		<input type="submit" name="cancel" value="Cancel" style=" background-color:red;"/>
+		<input type="submit" name="cancel" value="Cancel" style=" background-color:red"/>
 	</form>
 	<p><%=session.getAttribute("message").toString() %></p>
 	</div>

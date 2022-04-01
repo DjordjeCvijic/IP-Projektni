@@ -74,6 +74,7 @@ function getCites(){
 }
 
 function getLatLng(){
+    confirm.log(cites.length);
     var selectedCity=document.getElementById("city_select");
     cites.forEach(element=>{
         if(element.city==selectedCity){
@@ -81,4 +82,8 @@ function getLatLng(){
             document.getElementById("longitude").value=element.longitude;
         }
     });
+}
+
+function addVirtualTour(){
+    window.location.assign("add-virtual-tour.jsp")
 }

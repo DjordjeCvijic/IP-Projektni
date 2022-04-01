@@ -47,6 +47,8 @@ public class VirtualTourDto {
 	public void setYoutubeUrl(String youtubeUrl) {
 		this.youtubeUrl = youtubeUrl;
 	}
+
+
 	
 	
 

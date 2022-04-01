@@ -16,8 +16,9 @@
 <script type="text/javascript" src="js/museum.js"></script>
 </head>
 <body>
-
+<button class="btn" onClick="returnToAdminHome()">Back</button>
 <div class="main-div">
+	
 	<div class="header-div">
 		<p>Virtual tours :</p>
 		<button class="btn" onClick="addVirtualTour(<%= request.getParameter("id") %>)">Add virtual toure</button>
@@ -28,7 +29,7 @@
 				<h4>Name: <%= tourBean.getName() %></h4>
 				<h4>Duration: <%= tourBean.getDuration() %></h4>
 				<h4>Start: <%= tourBean.getStartDateTime()%></h4>
-				<button class="btn" onClick="deleteVirtualTour(<%= tourBean.getName() %>,<%= tourBean.getVirtualTourId() %>)">delete</button>
+				<button class="btn" onClick="deleteVirtualTour(<%=request.getParameter("id") %>,<%= tourBean.getVirtualTourId() %>)">delete</button>
 		</div>
 	
 		<%} %>

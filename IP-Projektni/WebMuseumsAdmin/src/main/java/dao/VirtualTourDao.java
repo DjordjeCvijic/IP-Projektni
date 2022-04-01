@@ -47,4 +47,27 @@ public class VirtualTourDao {
 		return resultList;
 	}
 
+	public static void saveVirtualTour(VirtualTourDto virtualTourDto) {
+		Connection connection=DBConnection.getConnection();
+		String query = " insert into virtual_tour ( name, museum_id, youtube_url, start_date_time, duration)"
+		        + " values ( ?, ?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement preparedStatement;
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, virtualTourDto.getName());
+			preparedStatement.setInt(2, virtualTourDto.getMuseumId());
+			preparedStatement.setString(3, virtualTourDto.getYoutubeUrl());
+			preparedStatement.setTimestamp(4, virtualTourDto.getStartDateTime());
+			preparedStatement.setInt(5, virtualTourDto.getDuration());
+
+			
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 }

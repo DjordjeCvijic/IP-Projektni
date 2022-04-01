@@ -10,9 +10,6 @@
 <!DOCTYPE html>
 <%
 
-	for(MuseumBean museum:MuseumService.getAllMuseums()){
-		out.println(museum.getName()+" "+museum.getAddress());
-	}
 %>
 <html>
 <head>

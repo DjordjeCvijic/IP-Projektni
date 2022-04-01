@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -31,6 +32,15 @@ public class VirtualTourService {
 		return result;
 		
 		
+	}
+	public static void saveVirtualTour(VirtualTourBean bean,String museumId) {
+		VirtualTourDto virtualTourDto=new VirtualTourDto();
+		virtualTourDto.setDuration(bean.getDuration());
+		virtualTourDto.setMuseumId(Integer.valueOf(museumId));
+		virtualTourDto.setName(bean.getName());
+		virtualTourDto.setStartDateTime(Timestamp.valueOf(bean.getStartDateTime()));
+		virtualTourDto.setYoutubeUrl(bean.getYoutubeUrl());
+		VirtualTourDao.saveVirtualTour(virtualTourDto);
 	}
 
 }
