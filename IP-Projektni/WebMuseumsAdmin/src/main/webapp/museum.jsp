@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <%
 
-	out.print(request.getParameter("id"));
 
 %>
 <html>
@@ -21,7 +20,7 @@
 <div class="main-div">
 	<div class="header-div">
 		<p>Virtual tours :</p>
-		<button class="btn" onClick="addVirtualTour()">Add virtual toure</button>
+		<button class="btn" onClick="addVirtualTour(<%= request.getParameter("id") %>)">Add virtual toure</button>
 	</div>
 	<div class="list-div">
 		<%for(VirtualTourBean tourBean:VirtualTourService.getAllVirtualToursInMuseum(request.getParameter("id"))) {%>

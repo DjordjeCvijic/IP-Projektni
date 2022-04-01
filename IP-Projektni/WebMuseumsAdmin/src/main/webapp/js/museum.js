@@ -1,5 +1,5 @@
-function addVirtualTour(){
-    window.location.assign("add-virtual-tour.jsp")
+function addVirtualTour(museumId){
+    window.location.assign("add-virtual-tour.jsp?museumId="+museumId)
 }
 
 function deleteVirtualTour(museumId,virtualTourId){

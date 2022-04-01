@@ -56,7 +56,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link href="styles/add-museum-style.css" type="text/css" rel="stylesheet">
+<link href="styles/add-page-style.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/add-museum.js"></script>
 </head>
 <body onload="getCountres()">
