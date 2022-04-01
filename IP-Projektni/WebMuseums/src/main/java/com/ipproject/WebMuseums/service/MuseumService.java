@@ -24,4 +24,7 @@ public class MuseumService {
 	
 		return resultList;
 	}
+	public Museum getByMuseumId(Integer museumId) {
+		return museumRepository.findByMuseumId(museumId).get();
+	}
 }
