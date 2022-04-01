@@ -35,4 +35,18 @@ public class MuseumService {
 		return resultList;
 	}
 
+	
+	public static void addMuseum(MuseumBean museumBean) {
+		MuseumDto museumDto=new MuseumDto();
+		museumDto.setAddress(museumBean.getAddress());
+		museumDto.setCityName(museumBean.getCityName());
+		museumDto.setCountryName(museumBean.getCountryName());
+		museumDto.setLatitude(museumBean.getLatitude());
+		museumDto.setLongitude(museumBean.getLongitude());
+		museumDto.setMuseumTypeId(Integer.valueOf(museumBean.getMuseumTypeName()));
+		museumDto.setName(museumBean.getName());
+		museumDto.setPhoneNumber(museumBean.getPhoneNumber());
+		MuseumDao.addMuseum(museumDto);
+	}
+	
 }

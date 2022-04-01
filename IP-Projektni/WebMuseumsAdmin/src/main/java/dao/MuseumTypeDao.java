@@ -34,5 +34,30 @@ public class MuseumTypeDao {
 		return museumTypeDto;
 		
 	}
+	
+	public static List<MuseumTypeDto> getAllMuseumType() {
+		List<MuseumTypeDto> museumTypeDtoList=new LinkedList<>();
+		Connection conn=DBConnection.getConnection();
+		try {
+			 PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM museum_type");
+			
+			 ResultSet rs=pstmt.executeQuery();
+			  while ( rs.next() ) {
+				  MuseumTypeDto museumTypeDto=new MuseumTypeDto();
+				  museumTypeDto.setMuseumTypeId(rs.getInt("museum_type_id"));
+				  museumTypeDto.setName(rs.getString("name"));
+				  museumTypeDtoList.add(museumTypeDto);
+		         }
+		         rs.close();
+		         pstmt.close();
+		         
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return museumTypeDtoList;
+		
+	}
+
 
 }
