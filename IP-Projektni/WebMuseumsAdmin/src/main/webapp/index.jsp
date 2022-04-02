@@ -1,4 +1,5 @@
 <%@ page import="service.UserService" %>
+<%@ page import="beans.UserBean" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -8,15 +9,15 @@
 <!DOCTYPE html>
 <%
 	if(request.getParameter("token")!=null){
-		userBean=UserService.getUserBeanByToken(request.getParameter("token"));
-		if(userBean.isAdmin()){
-			System.out.println("dosao");
-			userBean.setLogedIn(true);
-			System.out.println("stanje 1: "+userBean.isLogedIn());
+		UserBean user=UserService.getUserBeanByToken(request.getParameter("token"));
+		if(user.isAdmin()){
+			userBean.setAdmin(true);
+			userBean.setLoggedIn(true);
+			
 			response.sendRedirect("admin-home.jsp");
 			
 		}else{
-			userBean.setLogedIn(false);
+			userBean.setLoggedIn(false);
 			response.sendRedirect("unauthorized.jsp");
 		}
 		

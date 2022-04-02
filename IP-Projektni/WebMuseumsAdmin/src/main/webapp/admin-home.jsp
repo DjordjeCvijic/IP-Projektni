@@ -9,7 +9,7 @@
     
 <!DOCTYPE html>
 <%
-
+			if(!(userBean.isLoggedIn())) response.sendRedirect("unauthorized.jsp");
 %>
 <html>
 <head>

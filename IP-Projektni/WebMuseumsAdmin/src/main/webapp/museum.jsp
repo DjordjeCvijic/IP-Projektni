@@ -1,11 +1,14 @@
+<%@page import="service.VirtualTourService" %>
+<%@page import="beans.VirtualTourBean" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-   <%@page import="service.VirtualTourService" %>
-   <%@page import="beans.VirtualTourBean" %>
-    
+
+
+<jsp:useBean id="userBean" class="beans.UserBean" scope="session"></jsp:useBean>
+ 
 <!DOCTYPE html>
 <%
-
+	if(!(userBean.isLoggedIn())) response.sendRedirect("unauthorized.jsp");
 
 %>
 <html>

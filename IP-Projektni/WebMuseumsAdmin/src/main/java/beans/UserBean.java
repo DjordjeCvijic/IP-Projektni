@@ -8,14 +8,14 @@ public class UserBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private boolean admin;
-	private boolean logedIn;
+	private boolean loggedIn;
 	
-	public boolean isLogedIn() {
-		return logedIn;
+	public boolean isLoggedIn() {
+		return loggedIn;
 	}
 
-	public void setLogedIn(boolean logedIn) {
-		this.logedIn = logedIn;
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
 	}
 
 	public boolean isAdmin() {

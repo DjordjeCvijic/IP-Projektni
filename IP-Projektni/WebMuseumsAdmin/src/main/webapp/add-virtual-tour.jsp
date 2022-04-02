@@ -1,18 +1,22 @@
+<%@page import="service.VirtualTourService" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@page import="service.VirtualTourService" %>
+ 
     
  <jsp:useBean id="virtualTourBean" class="beans.VirtualTourBean" scope="request"></jsp:useBean>
+ <jsp:useBean id="userBean" class="beans.UserBean" scope="session"></jsp:useBean>
+ 
  <jsp:setProperty property="name" name="virtualTourBean" param="name"/>
  <jsp:setProperty property="duration" name="virtualTourBean" param="duration"/>
  <jsp:setProperty property="youtubeUrl" name="virtualTourBean" param="youtubeUrl"/>
  
 <!DOCTYPE html>
 <%
+	if(!(userBean.isLoggedIn())) response.sendRedirect("unauthorized.jsp");
 
-	if(request.getParameter("cancel")!=null){
+	if(request.getParameter("cancel")!=null)
 		response.sendRedirect("museum.jsp?id="+request.getParameter("museumId"));
-	}
+	
 	if(request.getParameter("submit")!=null){
 	
 		if(("".equals(request.getParameter("name")))
@@ -25,11 +29,8 @@
 			String dateTime=request.getParameter("date")+" "+request.getParameter("time")+":00";
 			virtualTourBean.setStartDateTime(dateTime);
 			session.setAttribute("message", "");
-			System.out.println(virtualTourBean.getName());
-			System.out.println(virtualTourBean.getDuration());
-			System.out.println(virtualTourBean.getYoutubeUrl());
-			System.out.println(virtualTourBean.getStartDateTime());
 			VirtualTourService.saveVirtualTour(virtualTourBean, request.getParameter("museumId"));
+			
 			response.sendRedirect("museum.jsp?id="+request.getParameter("museumId"));
 		}
 		

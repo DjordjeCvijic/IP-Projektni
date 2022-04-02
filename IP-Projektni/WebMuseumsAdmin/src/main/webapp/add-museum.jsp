@@ -5,6 +5,7 @@
 <%@ page import="dto.MuseumTypeDto" %>
 <%@ page import="service.MuseumService" %>
   <jsp:useBean id="museumBean" class="beans.MuseumBean" scope="request"></jsp:useBean>
+  <jsp:useBean id="userBean" class="beans.UserBean" scope="session"></jsp:useBean>
  
   <jsp:setProperty property="name" name="museumBean" param="name"/>
   <jsp:setProperty property="address" name="museumBean" param="address"/>
@@ -14,12 +15,16 @@
   <jsp:setProperty property="longitude" name="museumBean" param="longitude"/>
    <jsp:setProperty property="phoneNumber" name="museumBean" param="phoneNumber"/>
    <jsp:setProperty property="museumTypeName" name="museumBean" param="museum_type"/>
+   
+   
 <!DOCTYPE html>
 <%
+	if(!(userBean.isLoggedIn())) 
+		response.sendRedirect("unauthorized.jsp");
 
-	if(request.getParameter("cancel")!=null){
+	if(request.getParameter("cancel")!=null)
 		response.sendRedirect("admin-home.jsp");
-	}
+	
 	if(request.getParameter("submit")!=null){
 
 		if(("".equals(request.getParameter("name")))
@@ -32,16 +37,7 @@
 				||"".equals(request.getParameter("museum_type"))){
 			session.setAttribute("message", "sva polja nisu unesena");
 		}else{
-			session.setAttribute("message", "");
-			System.out.println(museumBean.getName());
-			System.out.println(museumBean.getAddress());
-			System.out.println(museumBean.getCountryName());
-			System.out.println(museumBean.getCityName());
-			System.out.println(museumBean.getLatitude());
-			System.out.println(museumBean.getLongitude());
-			System.out.println(museumBean.getPhoneNumber());
-			System.out.println(museumBean.getMuseumTypeName());
-			
+			session.setAttribute("message", "");			
 			
 			MuseumService.addMuseum(museumBean);
 			response.sendRedirect("admin-home.jsp");
