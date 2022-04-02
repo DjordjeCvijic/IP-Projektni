@@ -18,9 +18,10 @@ export class UserHomeComponent implements OnInit {
     this.museumService.getAllMuseums().subscribe({
       next:data=>{
         data.forEach(element=>this.museums.push(element));
+        
       }
      })
- 
+    
   }
 
 }

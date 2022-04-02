@@ -30,7 +30,7 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter{
   String[] userAndAminPermissionsList = {"/content-comment/**", "/review/**", "/genre/getAll",
           "/user-person/update-info"};
   String[] swaggerPermissionsList = {"/swagger-ui/*", "/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**"};
-  String[] permissionsForAllList = {"/auth/**","/test","/auth/login","/museum","/virtual-tour/**"};
+  String[] permissionsForAllList = {"/auth/**","/test","/auth/login","/museum/**","/virtual-tour/**"};
 
   // authentication
   @Override
