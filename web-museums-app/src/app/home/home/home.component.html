@@ -2,11 +2,9 @@
     <mat-toolbar-row>
         <h1>Web Museum</h1>
         <a routerLink="" class="logout-link"  (click)="logout()">Log out</a>
-        <a  (click)="openAdminApp()" class="toolbar-link ">Adin App</a>
+        <a  (click)="openAdminApp()" class="toolbar-link ">Admin App</a>
       </mat-toolbar-row>
-  </mat-toolbar>
-<h1>asdas</h1>
-  <div style="padding: 15px" *ngFor="let element of museums">
-    <app-museum-item  [museum]="element"></app-museum-item>
-    
-  </div>
+    </mat-toolbar>
+
+
+<router-outlet></router-outlet>

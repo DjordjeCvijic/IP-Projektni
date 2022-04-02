@@ -11,7 +11,6 @@ export class MuseumService {
   constructor(private http:HttpClient) { }
 
   public getAllMuseums(){
-
-    return this.http.get<Array<Museum>>(AppConst.API_ENDPOINT+"/museum");
+    return this.http.get<Array<Museum>>(AppConst.API_ENDPOINT+"/museum/get-all");
   }
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Museum } from 'src/app/model/museum.model';
 
 @Component({
@@ -10,10 +11,14 @@ export class MuseumItemComponent implements OnInit {
 
   @Input("museum") public museum:Museum|null=null;
   
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
-    // console.log(this.museum);
+  
+  }
+
+   public openMuseumPage(){
+      this.router.navigate(["home/museum"],{queryParams:{museumId:this.museum?.museumId}});
   }
 
 }

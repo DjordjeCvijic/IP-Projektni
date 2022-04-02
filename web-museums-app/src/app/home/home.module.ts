@@ -5,13 +5,17 @@ import { HomeRoutingModule } from './home-routing.module';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MuseumItemComponent } from './museum-item/museum-item.component';
+import { UserHomeComponent } from './user-home/user-home.component';
+import { MuseumComponent } from './museum/museum.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    MuseumItemComponent
+    MuseumItemComponent,
+    UserHomeComponent,
+    MuseumComponent
   ],
   imports: [
     CommonModule,

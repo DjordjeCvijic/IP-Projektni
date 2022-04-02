@@ -84,6 +84,4 @@ function getLatLng(){
     });
 }
 
-function addVirtualTour(){
-    window.location.assign("add-virtual-tour.jsp")
-}
+ 

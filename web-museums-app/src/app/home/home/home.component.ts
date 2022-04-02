@@ -13,21 +13,15 @@ import { MuseumService } from '../services/museum.service';
 })
 export class HomeComponent implements OnInit {
 
- public museums=new Array<Museum>();
+ 
  
 
   constructor(private  authService:AuthService,
-    private snackBar:MatSnackBar,
-    private museumService:MuseumService
+    private snackBar:MatSnackBar
+    
    ) { }
 
   ngOnInit(): void {
-    this.museumService.getAllMuseums().subscribe({
-     next:data=>{
-       data.forEach(element=>this.museums.push(element));
-     }
-    })
-
     
   }
 

@@ -36,6 +36,11 @@ public class VirtualTourService {
 		virtualTour.setYoutubeUrl(virtualTourRequestDto.getYoutubeUrl());
 		return virtualTour;
 	}
+
+	public List<VirtualTour> getVirtualTourOfMuseum(Integer museumId) {
+		
+		return virtualTourRepository.findAllByMuseum(museumService.getByMuseumId(museumId));
+	}
 	
 	
 	
