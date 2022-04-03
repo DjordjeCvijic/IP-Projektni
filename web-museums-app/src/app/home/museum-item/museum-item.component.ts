@@ -9,7 +9,7 @@ import { Museum } from 'src/app/model/museum.model';
 })
 export class MuseumItemComponent implements OnInit {
 
-  @Input("museum") public museum:Museum|null=null;
+  @Input("museum") public museum!:Museum;
   
   constructor(private router:Router) { }
 

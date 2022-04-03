@@ -1,0 +1,25 @@
+.virtual-tours-div {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-div {
+  padding: 20px;
+}
+
+.firs-row-div {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 25px;
+}
+.museum-info-div {
+  display: flex;
+  flex-direction: column;
+}
+.info-element-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 3px;
+}

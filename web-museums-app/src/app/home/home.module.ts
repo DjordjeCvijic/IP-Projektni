@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MuseumItemComponent } from './museum-item/museum-item.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { MuseumComponent } from './museum/museum.component';
+import { VirtualTourCardComponent } from './virtual-tour-card/virtual-tour-card.component';
 
 
 
@@ -15,7 +16,8 @@ import { MuseumComponent } from './museum/museum.component';
     HomeComponent,
     MuseumItemComponent,
     UserHomeComponent,
-    MuseumComponent
+    MuseumComponent,
+    VirtualTourCardComponent
   ],
   imports: [
     CommonModule,

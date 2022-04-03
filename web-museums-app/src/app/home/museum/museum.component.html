@@ -1,1 +1,31 @@
-<p>museum works!{{museum.name}}</p>
+
+<div class="main-div">
+    <div class="firs-row-div">
+        <div class="museum-info-div">
+            <div class="info-element-div">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">account_balance</mat-icon>
+                <span style="margin-left: 5px;">{{museum!.name}} </span>
+            </div>
+            <div class="info-element-div">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">location_on</mat-icon>
+                <span style="margin-left: 5px;">{{museum!.address}} , {{museum!.cityName}} , {{museum!.countryName}}</span>
+            </div>
+            <div class="info-element-div">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">phone</mat-icon>
+                <span style="margin-left: 5px;"> {{museum!.phoneNumber}}</span>
+            </div>
+            <div class="info-element-div">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">import_contacts</mat-icon>
+                <span style="margin-left: 5px;">{{museum!.museumType}}</span>
+            </div>
+            
+        </div>
+    </div>
+    <h1>Virtual tours of museum:</h1>
+    <div class="virtual-tours-div" >
+        <app-virtual-tour-card *ngFor="let virtualTour of museum.virtualTourList"
+            [virtualTour]="virtualTour"></app-virtual-tour-card>
+    </div>
+</div>
+
+
