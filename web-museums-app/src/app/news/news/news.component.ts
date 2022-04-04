@@ -17,7 +17,7 @@ export class NewsComponent implements OnInit {
   constructor(private  authService:AuthService,
     private snackBar:MatSnackBar,private newsService:NewsService) { }
 
-  private newsData:Array<News>=new Array();
+  public newsData:Array<News>=new Array();
 
   ngOnInit(): void {
     this.getDataFromRSS();
@@ -46,7 +46,7 @@ export class NewsComponent implements OnInit {
                 result.rss.channel[0].item[i].link[0],
                 result.rss.channel[0].item[i].description[0].trim(),
                 result.rss.channel[0].item[i].enclosure[0].$.url,
-                result.rss.channel[0].item[0].pubDate[0]
+                result.rss.channel[0].item[i].pubDate[0]
               ));
             }
            

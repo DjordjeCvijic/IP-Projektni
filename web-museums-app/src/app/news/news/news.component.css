@@ -32,3 +32,11 @@ h1 {
 .home-link:hover {
   color: yellow;
 }
+
+.main-div {
+  width: fit-content;
+  /* border: solid; */
+  /* border-color: red; */
+  margin-top: 50px;
+  margin-left: 200px;
+}

@@ -5,12 +5,14 @@ import { NewsRoutingModule } from './news-routing.module';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { NewsItemComponent } from './news-item/news-item.component';
 
 
 
 @NgModule({
   declarations: [
-    NewsComponent
+    NewsComponent,
+    NewsItemComponent
   ],
   imports: [HttpClientModule,
     NewsRoutingModule,

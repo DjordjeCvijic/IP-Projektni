@@ -1,0 +1,21 @@
+.main-div {
+  /* border: solid green; */
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 40px;
+}
+.image-div {
+  /* border: solid yellow; */
+  width: 350px;
+}
+.data-div {
+  /* border: solid purple; */
+  margin-left: 20px;
+  max-width: 600px;
+  word-wrap: break-word;
+}
+img {
+  min-width: 100%;
+  max-height: 100%;
+}
