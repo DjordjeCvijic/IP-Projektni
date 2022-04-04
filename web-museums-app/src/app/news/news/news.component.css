@@ -1,0 +1,34 @@
+h1 {
+  font-size: 28px;
+}
+
+.toolbar {
+  background-color: dodgerblue;
+}
+.toolbar-link,
+.logout-link,
+.home-link {
+  cursor: default;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.logout-link {
+  font-size: 20px;
+  position: absolute;
+  right: 5%;
+}
+.toolbar-link {
+  font-size: 20px;
+  margin-left: 130px;
+}
+.home-link {
+  font-size: 33px;
+}
+
+.toolbar-link:hover,
+.logout-link:hover,
+.home-link:hover {
+  color: yellow;
+}

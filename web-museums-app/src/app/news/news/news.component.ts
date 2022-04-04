@@ -1,28 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
 import { AppConst } from 'src/app/app_const';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { Museum } from 'src/app/model/museum.model';
-import { MuseumService } from '../services/museum.service';
+import { NewsService } from '../news.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-news',
+  templateUrl: './news.component.html',
+  styleUrls: ['./news.component.css']
 })
-export class HomeComponent implements OnInit {
-
- 
- 
+export class NewsComponent implements OnInit {
 
   constructor(private  authService:AuthService,
-    private snackBar:MatSnackBar
-    
-   ) { }
+    private snackBar:MatSnackBar,private newsService:NewsService) { }
 
   ngOnInit(): void {
-    
+      this.newsService.getData();
   }
 
   public logout(){
@@ -32,7 +25,6 @@ export class HomeComponent implements OnInit {
   public openAdminApp(){
     window.open(AppConst.ADMIN_APP_URL+"?token="+this.authService.getUserTokenFromLocalStorage(), "_blank");
   }
-
 
 
 }
