@@ -25,5 +25,6 @@ public class MuseumWithVirtualToursDto {
 	private String longitude;
 	private String museumType;
 	private List<VirtualTourResponseDto> virtualTourList=new LinkedList<>();
+	private WeatherDataDto weather;
 	
 }

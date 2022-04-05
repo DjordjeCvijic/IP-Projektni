@@ -14,5 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/My stuffs/GIT/IP-Projektni/IP-Projektni/WebMuseumsAdmin/src/main/webapp/WEB-INF/lib/postgresql-42.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/My stuffs/GIT/IP-Projektni/IP-Projektni/WebMuseumsAdmin/src/main/webapp/WEB-INF/lib/json-20180130.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
