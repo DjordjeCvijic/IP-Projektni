@@ -1,7 +1,7 @@
 
 <div class="main-div">
     <div class="firs-row-div">
-        <div class="museum-info-div">
+        <div class="info-div">
             <div class="info-element-div">
                 <mat-icon aria-hidden="false" aria-label="Example home icon">account_balance</mat-icon>
                 <span style="margin-left: 5px;">{{museum!.name}} </span>
@@ -18,7 +18,15 @@
                 <mat-icon aria-hidden="false" aria-label="Example home icon">import_contacts</mat-icon>
                 <span style="margin-left: 5px;">{{museum!.museumType}}</span>
             </div>
-            
+        </div>
+        <div class="weather-info-div"> 
+            <span>Description  : {{museum!.weather!.description}}</span>
+            <span>Temperature  : {{museum!.weather!.temperature}} C</span>
+            <span>Pressure  : {{museum!.weather!.pressure}} mb</span>
+            <span>Humidity  : {{museum!.weather!.humidity}} %</span>
+            <span>Visibility  : {{museum!.weather!.visibility}} m</span>
+            <span>WindSpeed  : {{museum!.weather!.windSpeed}} km/h</span>
+
         </div>
     </div>
     <h1>Virtual tours of museum:</h1>

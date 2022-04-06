@@ -19,4 +19,5 @@ public class WeatherDataDto {
 	private String humidity;//vlaznost
 	private String visibility;
 	private String windSpeed;
+	private String name;
 }

@@ -30,9 +30,6 @@ public class MuseumService {
 		List<MuseumResponseDto> resultList=new LinkedList<MuseumResponseDto>();
 		museumsFromStorage.forEach(e->resultList.add(new MuseumResponseDto(e.getMuseumId(), e.getName(), e.getAddress(), e.getPhoneNumber(), e.getCountryName(), e.getCityName(), e.getLatitude(), e.getLongitude(), e.getMuseumType().getName())));
 
-		//dodato
-		weatherService.getWeather("", "");
-		//
 		return resultList;
 	}
 	public Museum getByMuseumId(Integer museumId) {

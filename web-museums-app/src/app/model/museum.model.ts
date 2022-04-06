@@ -1,3 +1,5 @@
+import { Weather } from "./weather.model";
+
 export class Museum{
     museumId:String;
     name:String;
@@ -18,7 +20,8 @@ export class Museum{
         cityName:String,
         latitude:String,
         longitude:String,
-        museumType:String){
+        museumType:String,
+        ){
 
         this.museumId=museumId;
         this.name=name;
@@ -29,7 +32,7 @@ export class Museum{
         this.latitude=latitude;
         this.longitude=longitude;
         this.museumType=museumType;
-
+        
 
     }
 

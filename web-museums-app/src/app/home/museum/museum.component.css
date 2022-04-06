@@ -12,8 +12,10 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 25px;
+  justify-content: space-between;
 }
-.museum-info-div {
+.info-div,
+.weather-info-div {
   display: flex;
   flex-direction: column;
 }
@@ -22,4 +24,8 @@
   flex-direction: row;
   align-items: center;
   margin: 3px;
+}
+
+.weather-info-div {
+  margin-right: 50px;
 }

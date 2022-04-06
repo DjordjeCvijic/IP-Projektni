@@ -1,4 +1,5 @@
 import { VirtualTour } from "./virtual-tour.model";
+import { Weather } from "./weather.model";
 
 export class MuseumWithVirtualTours{
     name:String;
@@ -11,6 +12,7 @@ export class MuseumWithVirtualTours{
     longitude:String;
     museumType:String;
     virtualTourList:Array<VirtualTour>;
+    weather?:Weather;
 
 
     constructor(
@@ -23,7 +25,8 @@ export class MuseumWithVirtualTours{
         latitude?:String,
         longitude?:String,
         museumType?:String,
-        virtualTourList?:Array<VirtualTour>
+        virtualTourList?:Array<VirtualTour>,
+        weather?:Weather
     ){
         this.address=address||"";
         this.cityName=cityName||"";
@@ -35,6 +38,7 @@ export class MuseumWithVirtualTours{
         this.name=name||"";
         this.phoneNumber=phoneNumber||"";
         this.virtualTourList=virtualTourList||[];
+        this.weather=weather;
     }
 }
 
