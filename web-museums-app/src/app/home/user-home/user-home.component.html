@@ -1,3 +1,21 @@
-<div style="padding: 15px" *ngFor="let element of museums">
-    <app-museum-item  [museum]="element"></app-museum-item>   
+
+<div class="firs-row">
+    <div class="filter-div">
+        <form [formGroup]="form">
+            <mat-form-field>
+                <mat-label>Museum name</mat-label>
+                <input type="text" matInput formControlName="museumNameField" >
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input type="text" matInput formControlName="locationField" >
+            </mat-form-field>
+            <button mat-button class="button"  (click)="filter()">Filter</button>
+        </form>
+        <button mat-button class="button"  (click)="showAll()">Clear filter</button>
+    </div>
+</div>
+
+<div class="museum-list-div" >
+    <app-museum-item  [museum]="element"  *ngFor="let element of museumsToShow"></app-museum-item>   
 </div>

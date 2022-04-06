@@ -1,0 +1,22 @@
+.museum-list-div {
+  padding-top: 50px;
+  padding-right: 150px;
+  padding-left: 150px;
+}
+.filter-div {
+  background-color: rgb(125, 183, 240);
+  width: 250px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.firs-row {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 20px;
+}
+
+.button {
+  background-color: dodgerblue;
+  margin-top: 5px;
+  width: 100%;
+}

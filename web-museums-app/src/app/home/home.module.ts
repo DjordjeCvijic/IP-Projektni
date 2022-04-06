@@ -8,6 +8,7 @@ import { MuseumItemComponent } from './museum-item/museum-item.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { MuseumComponent } from './museum/museum.component';
 import { VirtualTourCardComponent } from './virtual-tour-card/virtual-tour-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,13 +18,14 @@ import { VirtualTourCardComponent } from './virtual-tour-card/virtual-tour-card.
     MuseumItemComponent,
     UserHomeComponent,
     MuseumComponent,
-    VirtualTourCardComponent
+    VirtualTourCardComponent,
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     AppMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }
