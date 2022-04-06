@@ -1,11 +1,13 @@
 package com.ipproject.WebMuseums.service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ipproject.WebMuseums.dto.LoginCount;
 import com.ipproject.WebMuseums.model.LoginHistory;
 import com.ipproject.WebMuseums.model.UserPerson;
 import com.ipproject.WebMuseums.repository.LoginHistoryRepository;
@@ -42,9 +44,22 @@ public class LoginHistoryService {
 	}
 	private LocalDateTime getStartOfHour() {
 		LocalDateTime now=LocalDateTime.now();
-//		LocalDateTime startOfHour=LocalDateTime.now().minusMinutes(LocalDateTime.now().getMinute());
-//		return startOfHour.minusSeconds(startOfHour.getSecond());
 		return now.minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
+	}
+	
+	private int getNumberOfLoginsInHour(LocalDateTime fromTime,LocalDateTime toTime) {
+		return loginHistoryRepository.findAllByLoggedTimeBetween(fromTime, toTime).size();
+	}
+	
+	public List<LoginCount> getNumberOfLoginList(){
+		List<LoginCount>resultList=new LinkedList<>();
+		LocalDateTime startOfHour=getStartOfHour();
+		for(int i=0;i<24;i++) {
+			int count=getNumberOfLoginsInHour(startOfHour.minusHours(i), startOfHour.minusHours(i-1));
+			resultList.add(new LoginCount(startOfHour.minusHours(i).getHour()+1,count));
+		}
+
+		return resultList;
 	}
 
 }
