@@ -16,6 +16,7 @@ import com.ipproject.WebMuseums.dto.UserPersonResponseDto;
 import com.ipproject.WebMuseums.model.AuthenticationRequest;
 import com.ipproject.WebMuseums.model.AuthenticationResponse;
 import com.ipproject.WebMuseums.model.UserPerson;
+import com.ipproject.WebMuseums.service.LoginHistoryService;
 import com.ipproject.WebMuseums.service.UserPersonService;
 import com.ipproject.WebMuseums.util.JwtUtil;
 
@@ -42,13 +43,16 @@ public class AuthController {
     private JwtUtil jwtUtil;
 
     @Autowired
-    UserPersonService userPersonService;
+    private UserPersonService userPersonService;
+    @Autowired
+    private LoginHistoryService loginHistoryService;
 	
 	
 	 @PostMapping( "/login")
 	    public AuthenticationResponse createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
 	            throws Exception {
-		
+		//1:uspijesno
+		//2:pogresni kredencijali
 	        try {
 	            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 	                    authenticationRequest.getUsername(), authenticationRequest.getPassword()));
@@ -65,7 +69,8 @@ public class AuthController {
 	        
 	      //cuvanje tokena
 	       userPersonService.saveToken(authenticationRequest.getUsername(),jwt);
-	        
+	       //cuvanjen vremena logovanja(ako nema u trenutnom satu)
+	       loginHistoryService.save(userPersonService.getUserPersonByUsername(authenticationRequest.getUsername()).get());
 	        
 	        return new AuthenticationResponse("1",jwt);
 
