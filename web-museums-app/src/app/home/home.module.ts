@@ -9,6 +9,8 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { MuseumComponent } from './museum/museum.component';
 import { VirtualTourCardComponent } from './virtual-tour-card/virtual-tour-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -19,13 +21,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserHomeComponent,
     MuseumComponent,
     VirtualTourCardComponent,
+    BarChartComponent,
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     AppMaterialModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
   ]
 })
 export class HomeModule { }

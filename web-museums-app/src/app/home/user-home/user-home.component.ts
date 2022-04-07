@@ -1,6 +1,9 @@
+import { newArray } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { LoginCount } from 'src/app/model/login-count.model';
 import { Museum } from 'src/app/model/museum.model';
+import { LoginHistoryService } from '../services/login-history.service';
 import { MuseumService } from '../services/museum.service';
 
 @Component({
@@ -13,26 +16,19 @@ export class UserHomeComponent implements OnInit {
 
   private museums=new Array<Museum>();
   public museumsToShow=new Array<Museum>();
+  public loginCount=new Array<LoginCount>();
   public form:FormGroup=new FormGroup({});
   
   constructor(private museumService:MuseumService,
     private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
-    this.museumService.getAllMuseums().subscribe({
-      next:data=>{
-        data.forEach(element=>{
-          this.museums.push(element);
-          this.museumsToShow.push(element);
-        });
-        
-      }
-     });
-     this.form=this.formBuilder.group({museumNameField:[null],locationField:[null]})
-    
+    this.getMuseums();
+  
   }
 
   public filter(){
+    console.log("broj podataka ",this.loginCount.length);
     if(this.form.value.museumNameField != null){
       console.log("postoji naziv muzeja");
       this.museumsToShow=this.museums.filter((element, index, array)=>{
@@ -51,5 +47,19 @@ export class UserHomeComponent implements OnInit {
     this.museumsToShow=this.museums;
     this.form.reset();
   }
+
+  getMuseums(){
+    this.museumService.getAllMuseums().subscribe({
+      next:data=>{
+        data.forEach(element=>{
+          this.museums.push(element);
+          this.museumsToShow.push(element);
+        });
+        
+      }
+     });
+     this.form=this.formBuilder.group({museumNameField:[null],locationField:[null]})
+  }
+  
 
 }

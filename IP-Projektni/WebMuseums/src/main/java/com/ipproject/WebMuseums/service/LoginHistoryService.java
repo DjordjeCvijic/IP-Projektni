@@ -1,6 +1,7 @@
 package com.ipproject.WebMuseums.service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -58,7 +59,7 @@ public class LoginHistoryService {
 			int count=getNumberOfLoginsInHour(startOfHour.minusHours(i), startOfHour.minusHours(i-1));
 			resultList.add(new LoginCount(startOfHour.minusHours(i).getHour()+1,count));
 		}
-
+Collections.reverse(resultList);
 		return resultList;
 	}
 
