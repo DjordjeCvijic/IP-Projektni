@@ -12,6 +12,7 @@ import com.ipproject.WebMuseums.dto.UserPersonResponseDto;
 import com.ipproject.WebMuseums.model.Role;
 import com.ipproject.WebMuseums.model.UserPerson;
 import com.ipproject.WebMuseums.model.UserPersonRole;
+import com.ipproject.WebMuseums.model.UserStatus;
 import com.ipproject.WebMuseums.repository.RoleRepository;
 import com.ipproject.WebMuseums.repository.UserPersonRepository;
 import com.ipproject.WebMuseums.repository.UserPersonRoleRepository;
@@ -20,31 +21,39 @@ import com.ipproject.WebMuseums.repository.UserPersonRoleRepository;
 public class UserPersonService {
 	
 	@Autowired
-	UserPersonRepository userPersonRepository;
+	private UserPersonRepository userPersonRepository;
 	@Autowired
-    PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 	 @Autowired
-	    RoleRepository roleRepository;
+	 private   RoleRepository roleRepository;
 	 @Autowired
-	    UserPersonRoleRepository userPersonRoleRepository;
+	 private  UserPersonRoleRepository userPersonRoleRepository;
+	 @Autowired
+	 private UserStatusService userStatusService;
 
 	public Optional<UserPerson> getUserPersonByUsername(String username) {
 		return userPersonRepository.findByUsername(username);
 	}
 
     public UserPersonResponseDto saveUserPerson(UserPersonDto userPersonDto) {
+    	//1 ok,2 usernamealready exists,3 email already exists 
     	if(userPersonRepository.countByUsername(userPersonDto.getUsername())!=0) {
     		return new UserPersonResponseDto("2");
     	}
     	if(userPersonRepository.countByEmail(userPersonDto.getEmail())!=0) {
     		return new UserPersonResponseDto("3");
     	}
-        UserPerson savedUser = userPersonRepository.save(buildUserFromDto(userPersonDto));
+    	
+    	UserPerson userToSave=buildUserFromDto(userPersonDto);
+    	UserStatus status=userStatusService.getUserStatusById(1);
+    	userToSave.setUserStatus(status);
+        UserPerson savedUser = userPersonRepository.save(userToSave);
+        
         Integer userRoleId=2;//registrovati se mogu samo obicni korisnici
         UserPersonRoleKey key = new UserPersonRoleKey(savedUser.getUserPersonId(), userRoleId);
         Role role = roleRepository.getById(userRoleId);
         userPersonRoleRepository.save(new UserPersonRole(key, savedUser, role));
-        
+
         return buildUserToReply(savedUser);
         
     }
@@ -59,6 +68,7 @@ public class UserPersonService {
 		user.setPassword(savedUser.getPassword());
 		user.setUsername(savedUser.getUsername());
 		user.setUserPersonId(savedUser.getUserPersonId());
+		user.setUserStatus(savedUser.getUserStatus());
 		return user;
 	}
 

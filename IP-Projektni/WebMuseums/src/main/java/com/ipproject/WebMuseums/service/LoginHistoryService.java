@@ -59,7 +59,7 @@ public class LoginHistoryService {
 			int count=getNumberOfLoginsInHour(startOfHour.minusHours(i), startOfHour.minusHours(i-1));
 			resultList.add(new LoginCount(startOfHour.minusHours(i).getHour()+1,count));
 		}
-Collections.reverse(resultList);
+		Collections.reverse(resultList);
 		return resultList;
 	}
 
