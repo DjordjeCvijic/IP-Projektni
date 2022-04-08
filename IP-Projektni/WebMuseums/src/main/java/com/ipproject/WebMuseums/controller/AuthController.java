@@ -51,6 +51,7 @@ public class AuthController {
 	            throws Exception {
 		//1:uspijesno
 		//2:pogresni kredencijali
+		//3:nije odobreno ili blokirano,u 
 	        try {
 	            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 	                    authenticationRequest.getUsername(), authenticationRequest.getPassword()));
@@ -61,14 +62,17 @@ public class AuthController {
 	        	return new AuthenticationResponse("2", ex.getMessage());
 	        }
 	        
-	        
+	        UserPerson user=userPersonService.getUserPersonByUsername(authenticationRequest.getUsername()).get();
+	        if(user.getUserStatus().getUserStatusId()!=2) {
+	        	return new AuthenticationResponse("3", user.getUserStatus().getUserStatusName());
+	        }
 	        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 	        final String jwt = jwtUtil.generateToken(userDetails);
 	        
 	      //cuvanje tokena
 	       userPersonService.saveToken(authenticationRequest.getUsername(),jwt);
 	       //cuvanjen vremena logovanja(ako nema u trenutnom satu)
-	       loginHistoryService.save(userPersonService.getUserPersonByUsername(authenticationRequest.getUsername()).get());
+	       loginHistoryService.save(user);
 	        
 	        return new AuthenticationResponse("1",jwt);
 

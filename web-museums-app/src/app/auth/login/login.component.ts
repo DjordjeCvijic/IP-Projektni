@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { access } from 'fs';
 import { AppConst } from 'src/app/app_const';
 import { AuthService } from '../services/auth.service';
 
@@ -30,11 +32,14 @@ export class LoginComponent implements OnInit {
 
   public login(form:any){
     this.authService.login(form.value.username,form.value.password).subscribe({
-      next:data=>{
-        if(data.status==2){
+      next:result=>{
+        if(result.status==2){
           this.snackBar.open("kredincijalni nisu validni",undefined,{duration:2000})
-        }else if(data.status==1){
-          this.authService.saveUserTokenToLocalStorage(data.jwt);
+        }else if(result.status==3){
+          this.snackBar.open("ACCOUNT STATUS: "+result.jwt,undefined,{duration:2000})
+        }
+        else if(result.status==1){
+          this.authService.saveUserTokenToLocalStorage(result.data);
           this.snackBar.open("uspijesno ste se ulogovali",undefined, {
             duration: 2000
           });
