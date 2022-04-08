@@ -8,17 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipproject.WebMuseums.dto.LoginCount;
+import com.ipproject.WebMuseums.dto.UserInformationDto;
 import com.ipproject.WebMuseums.service.LoginHistoryService;
+import com.ipproject.WebMuseums.service.UserInfoService;
 
 @RestController
-@RequestMapping("/login-history")
-public class LoginHistoryController {
+@RequestMapping("/user-info")
+public class UserInfoController {
 	@Autowired
-	private LoginHistoryService loginHistoryService;
+	private UserInfoService userInfoService;
 	
 	
 	@GetMapping("")
-	public List<LoginCount> getLoginCounts(){
-		return loginHistoryService.getNumberOfLoginList();
+	public UserInformationDto getLoginCounts(){
+		return  userInfoService.getNumberOfLoginList();
 	}
 }

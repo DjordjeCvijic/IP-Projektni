@@ -9,8 +9,8 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { MuseumComponent } from './museum/museum.component';
 import { VirtualTourCardComponent } from './virtual-tour-card/virtual-tour-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { UsersInfoComponent } from './users-info/users-info.component';
 
 
 
@@ -21,7 +21,7 @@ import { NgChartsModule } from 'ng2-charts';
     UserHomeComponent,
     MuseumComponent,
     VirtualTourCardComponent,
-    BarChartComponent,
+    UsersInfoComponent,
   ],
   imports: [
     CommonModule,

@@ -95,10 +95,18 @@ public class UserPersonService {
 	}
 	
 	public void logOutUser(String token) {
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@   usao u logout@@@@@@@@@@@@@@@@@@@@@@");
 		UserPerson user=userPersonRepository.findByToken(token).get();
 		user.setToken("");
 		userPersonRepository.save(user);
+	}
+
+	public Integer getActiveUsersCount() {
+		long number=userPersonRepository.count()- userPersonRepository.countByToken("");
+		return Long.valueOf(number).intValue();
+	}
+
+	public Integer getRegisteredUsersCount() {
+		return Long.valueOf(userPersonRepository.countByUserStatus(userStatusService.getUserStatusById(2))).intValue();
 	}
 	
 	

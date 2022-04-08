@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoginCount } from 'src/app/model/login-count.model';
 import { Museum } from 'src/app/model/museum.model';
-import { LoginHistoryService } from '../services/login-history.service';
 import { MuseumService } from '../services/museum.service';
 
 @Component({

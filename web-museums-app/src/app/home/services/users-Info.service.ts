@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConst } from 'src/app/app_const';
-import { LoginCount } from 'src/app/model/login-count.model';
+import { UsersInfo } from 'src/app/model/users-info.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginHistoryService {
+export class UsersInfoService {
 
   constructor(private http:HttpClient) { }
 
 
   getLoginCount(){
-    return this.http.get<Array<LoginCount>>(AppConst.API_ENDPOINT+"/login-history");
+    return this.http.get<UsersInfo>(AppConst.API_ENDPOINT+"/user-info");
   }
 }

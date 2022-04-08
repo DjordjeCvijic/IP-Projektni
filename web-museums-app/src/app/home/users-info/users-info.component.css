@@ -1,0 +1,16 @@
+.info-div {
+  display: flex;
+  flex-direction: row;
+}
+.canvas-chart {
+  width: 500px;
+}
+
+.users-info-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-left: 150px;
+  width: max-content;
+}
