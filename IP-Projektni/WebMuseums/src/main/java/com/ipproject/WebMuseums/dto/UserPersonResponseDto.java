@@ -13,5 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserPersonResponseDto extends UserPerson{
 	private String status;//1 ok,2 usernamealready exists,3 e mail already exists 
+	private boolean admin;
 
 }

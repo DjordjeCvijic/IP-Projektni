@@ -11,7 +11,7 @@
 }
 .firs-row {
   display: flex;
-  /* flex-direction: row-reverse; */
+  flex-direction: row-reverse;
   justify-content: space-between;
   padding: 20px;
 }

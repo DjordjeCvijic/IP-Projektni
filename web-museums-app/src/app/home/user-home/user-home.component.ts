@@ -1,6 +1,7 @@
 import { newArray } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { LocalStorageService } from 'src/app/global-services/local-storage.service';
 import { LoginCount } from 'src/app/model/login-count.model';
 import { Museum } from 'src/app/model/museum.model';
 import { MuseumService } from '../services/museum.service';
@@ -17,11 +18,13 @@ export class UserHomeComponent implements OnInit {
   public museumsToShow=new Array<Museum>();
   public loginCount=new Array<LoginCount>();
   public form:FormGroup=new FormGroup({});
+  public isAdmin:boolean=false;
   
   constructor(private museumService:MuseumService,
-    private formBuilder:FormBuilder) { }
+    private formBuilder:FormBuilder,private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
+    this.isAdmin=this.localStorageService.getUserRoleFromLocalStorage();
     this.getMuseums();
   
   }

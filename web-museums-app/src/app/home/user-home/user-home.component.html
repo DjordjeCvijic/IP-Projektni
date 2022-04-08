@@ -1,6 +1,6 @@
 
 <div class="firs-row">
-    <app-users-info></app-users-info>
+    <!-- <app-users-info *ngIf="isAdmin"></app-users-info> -->
     <div class="filter-div">
         <form [formGroup]="form">
             <mat-form-field>
@@ -15,6 +15,7 @@
         </form>
         <button mat-button class="button"  (click)="showAll()">Clear filter</button>
     </div>
+    <app-users-info *ngIf="isAdmin"></app-users-info>
    
 
 </div>

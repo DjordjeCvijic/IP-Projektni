@@ -10,4 +10,5 @@ import lombok.Setter;
 public class AuthenticationResponse {
 	private String status;
 	private String data;
+	private boolean admin;
 }

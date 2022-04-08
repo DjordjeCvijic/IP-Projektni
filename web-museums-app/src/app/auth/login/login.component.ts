@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { access } from 'fs';
-import { AppConst } from 'src/app/app_const';
+import { LocalStorageService } from 'src/app/global-services/local-storage.service';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -19,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,
     private snackBar:MatSnackBar,
     private authService:AuthService,
-    private router:Router
+    private router:Router,
+    private localStorageService:LocalStorageService
     ) { }
 
   ngOnInit(): void {
@@ -36,10 +36,11 @@ export class LoginComponent implements OnInit {
         if(result.status==2){
           this.snackBar.open("kredincijalni nisu validni",undefined,{duration:2000})
         }else if(result.status==3){
-          this.snackBar.open("ACCOUNT STATUS: "+result.jwt,undefined,{duration:2000})
+          this.snackBar.open("ACCOUNT STATUS: "+result.data,undefined,{duration:2000})
         }
         else if(result.status==1){
-          this.authService.saveUserTokenToLocalStorage(result.data);
+          this.localStorageService.saveUserTokenToLocalStorage(result.data);
+          this.localStorageService.saveUserRoleToLocalStorage(result.admin as boolean)
           this.snackBar.open("uspijesno ste se ulogovali",undefined, {
             duration: 2000
           });

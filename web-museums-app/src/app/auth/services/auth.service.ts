@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConst } from 'src/app/app_const';
+import { LocalStorageService } from 'src/app/global-services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private localStorageService:LocalStorageService) { }
 
 
   public login(username:String,password:String){
@@ -33,21 +34,17 @@ export class AuthService {
    
   }
   public logOut(){
-    const body=this.getUserTokenFromLocalStorage();
-    console.log("token ",body);
-    this.http.post<any>(AppConst.API_ENDPOINT+"/auth/log-out",body).subscribe({});
+
+    var token=this.localStorageService.getUserTokenFromLocalStorage();
+    console.log("token1: ",token);
+    this.http.post<any>(AppConst.API_ENDPOINT+"/auth/log-out",token).subscribe({});
     localStorage.removeItem(AppConst.TOKEN_STORAGE_KEY);
-    console.log("token ",body);
+    localStorage.removeItem(AppConst.USER_ROLE_STORAGE_KEY);
+     token=this.localStorageService.getUserTokenFromLocalStorage();
+    console.log("token2: ",token);
+
   }
 
-  public saveUserTokenToLocalStorage(token:string){
-    localStorage.setItem(AppConst.TOKEN_STORAGE_KEY,token);
-  }
-
-  public getUserTokenFromLocalStorage(){
-    var token=localStorage.getItem(AppConst.TOKEN_STORAGE_KEY);
-    
-    return token;
-  }
+  
 
 }

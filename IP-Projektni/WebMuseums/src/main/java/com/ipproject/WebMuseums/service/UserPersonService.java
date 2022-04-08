@@ -38,10 +38,10 @@ public class UserPersonService {
     public UserPersonResponseDto saveUserPerson(UserPersonDto userPersonDto) {
     	//1 ok,2 usernamealready exists,3 email already exists 
     	if(userPersonRepository.countByUsername(userPersonDto.getUsername())!=0) {
-    		return new UserPersonResponseDto("2");
+    		return new UserPersonResponseDto("2",false);
     	}
     	if(userPersonRepository.countByEmail(userPersonDto.getEmail())!=0) {
-    		return new UserPersonResponseDto("3");
+    		return new UserPersonResponseDto("3",false);
     	}
     	
     	UserPerson userToSave=buildUserFromDto(userPersonDto);
@@ -61,7 +61,6 @@ public class UserPersonService {
 	private UserPersonResponseDto buildUserToReply(UserPerson savedUser) {
 		UserPersonResponseDto user=new UserPersonResponseDto();
 		user.setStatus("1");
-		user.setActive(true);
 		user.setEmail(savedUser.getEmail());
 		user.setFirstName(savedUser.getEmail());
 		user.setLastName(savedUser.getLastName());
@@ -69,6 +68,7 @@ public class UserPersonService {
 		user.setUsername(savedUser.getUsername());
 		user.setUserPersonId(savedUser.getUserPersonId());
 		user.setUserStatus(savedUser.getUserStatus());
+		
 		return user;
 	}
 

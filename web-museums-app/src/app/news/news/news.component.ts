@@ -6,6 +6,7 @@ import { NewsService } from '../news.service';
 import * as xml2js from "xml2js";
 import {Parser} from 'xml2js';
 import { News } from 'src/app/model/news.model';
+import { LocalStorageService } from 'src/app/global-services/local-storage.service';
 
 @Component({
   selector: 'app-news',
@@ -14,7 +15,7 @@ import { News } from 'src/app/model/news.model';
 })
 export class NewsComponent implements OnInit {
 
-  constructor(private  authService:AuthService,
+  constructor(private  authService:AuthService,private localStorageService:LocalStorageService,
     private snackBar:MatSnackBar,private newsService:NewsService) { }
 
   public newsData:Array<News>=new Array();
@@ -29,7 +30,7 @@ export class NewsComponent implements OnInit {
     this.snackBar.open("izlogovani ste",undefined,{duration:2000})
   }
   public openAdminApp(){
-    window.open(AppConst.ADMIN_APP_URL+"?token="+this.authService.getUserTokenFromLocalStorage(), "_blank");
+    window.open(AppConst.ADMIN_APP_URL+"?token="+this.localStorageService.getUserTokenFromLocalStorage(), "_blank");
   }
   private getDataFromRSS(){
     const p: Parser = new xml2js.Parser();
@@ -49,12 +50,7 @@ export class NewsComponent implements OnInit {
                 result.rss.channel[0].item[i].pubDate[0]
               ));
             }
-           
-            // console.log(result.rss.channel[0].item[0].title[0].trim());//naslov
-            // console.log(result.rss.channel[0].item[0].link[0]);//link za cijelu pricu
-            // console.log(result.rss.channel[0].item[0].description[0].trim());//podnaslov
-            // console.log(result.rss.channel[0].item[0].enclosure[0].$.url);//slika
-            // console.log(result.rss.channel[0].item[0].pubDate[0]);//datum objavljivanja
+             console.log(result.rss.channel[0].item[0].pubDate[0]);//datum objavljivanja
 
           });
       }

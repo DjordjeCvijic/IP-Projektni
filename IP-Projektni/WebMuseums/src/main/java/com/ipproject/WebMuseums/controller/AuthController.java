@@ -14,7 +14,9 @@ import com.ipproject.WebMuseums.dto.UserPersonResponseDto;
 import com.ipproject.WebMuseums.model.AuthenticationRequest;
 import com.ipproject.WebMuseums.model.AuthenticationResponse;
 import com.ipproject.WebMuseums.model.UserPerson;
+import com.ipproject.WebMuseums.model.UserPersonRole;
 import com.ipproject.WebMuseums.service.LoginHistoryService;
+import com.ipproject.WebMuseums.service.UserPersonRoleService;
 import com.ipproject.WebMuseums.service.UserPersonService;
 import com.ipproject.WebMuseums.util.JwtUtil;
 
@@ -44,6 +46,8 @@ public class AuthController {
     private UserPersonService userPersonService;
     @Autowired
     private LoginHistoryService loginHistoryService;
+    @Autowired
+    private UserPersonRoleService userPersonRoleService;
 	
 	
 	 @PostMapping( "/login")
@@ -59,12 +63,12 @@ public class AuthController {
 	            SecurityContextHolder.getContext().setAuthentication(authentication);
 	        } catch (BadCredentialsException ex) {
 
-	        	return new AuthenticationResponse("2", ex.getMessage());
+	        	return new AuthenticationResponse("2", ex.getMessage(),false);
 	        }
 	        
 	        UserPerson user=userPersonService.getUserPersonByUsername(authenticationRequest.getUsername()).get();
 	        if(user.getUserStatus().getUserStatusId()!=2) {
-	        	return new AuthenticationResponse("3", user.getUserStatus().getUserStatusName());
+	        	return new AuthenticationResponse("3", user.getUserStatus().getUserStatusName(),false);
 	        }
 	        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 	        final String jwt = jwtUtil.generateToken(userDetails);
@@ -73,8 +77,8 @@ public class AuthController {
 	       userPersonService.saveToken(authenticationRequest.getUsername(),jwt);
 	       //cuvanjen vremena logovanja(ako nema u trenutnom satu)
 	       loginHistoryService.save(user);
-	        
-	        return new AuthenticationResponse("1",jwt);
+	        UserPersonRole userPersonRole=userPersonRoleService.findByUserPerson(user).get(0);
+	        return new AuthenticationResponse("1",jwt,userPersonRole.getRole().getRoleId()==1);
 
 	    }
 	 
