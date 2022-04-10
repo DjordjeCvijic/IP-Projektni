@@ -8,15 +8,21 @@
 <!DOCTYPE html>
 <%
 	if(!(userBean.isLoggedIn())) response.sendRedirect("unauthorized.jsp");
+
+	if((request.getParameter("userId")!=null)&&(request.getParameter("statusId")!=null)){
+		
+		UserService.saveUserStatus(request.getParameter("userId"), request.getParameter("statusId"));
+	}
 %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link href="styles/users.css" type="text/css" rel="stylesheet">
-<script src="js/admin-home.js" type="text/javascript"></script>
+<script src="js/users.js" type="text/javascript"></script>
 </head>
 <body>
+	<button class="btn" onclick="goBack()">Back</button>
 	<div class="main-div">
 		<div class="header-div">
 			<p>Users :</p>				
@@ -24,13 +30,13 @@
 		
 		<table>
 			<tr>
-				<th>User id</th>
+				<th>User ID</th>
 				<th>First name</th>
 				<th>Last name</th>
 				<th>Username</th>
 				<th>Email</th>
 				<th>User status</th>
-				<th></th>
+				<th>Save</th>
 				
 			</tr>
 			<% for(UserInfoBean user:UserService.getUsers()){ %>
@@ -40,8 +46,16 @@
 				<td><%= user.getLastName()%></td>
 				<td><%= user.getUsername()%></td>
 				<td><%= user.getEmail()%></td>
-				<td><%= user.getUserStatusId()%></td>
-				
+				<td>
+					<select  id="select<%= user.getUserId()%>" onchange="selectChance('button<%= user.getUserId()%>')">
+						<option value="1" <%if(user.getUserStatusId()==1){ %>selected<%} %> >Not approved</option>
+						<option value="2" <%if(user.getUserStatusId()==2){ %>selected<%} %>>Approved</option>
+						<option value="3"<%if(user.getUserStatusId()==3){ %>selected<%} %>>Blocked</option>
+					</select>
+				</td>
+				<td>
+					<button disabled="disabled" id="button<%= user.getUserId()%>" onclick="saveUserStatus('select<%= user.getUserId()%>',<%= user.getUserId()%>)" >SAVE</button>
+				</td>
 			</tr>
 			<%} %>
 		</table>

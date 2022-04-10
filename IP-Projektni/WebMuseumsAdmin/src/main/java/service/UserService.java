@@ -3,6 +3,7 @@ package service;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import beans.UserBean;
 import beans.UserInfoBean;
@@ -39,8 +40,14 @@ public class UserService implements Serializable{
 		});		
 		
 		
-		return resultUserList;
+		return resultUserList.stream().sorted((a,b)->a.getUserId()-b.getUserId()).collect(Collectors.toList());
 		
+	}
+	
+	
+	public static void saveUserStatus(String userId,String newStatusId) {
+		System.out.println("user "+userId+" new status "+newStatusId);
+		UserDao.updateUserStatus(Integer.valueOf(userId), Integer.valueOf(newStatusId));
 	}
 
 }

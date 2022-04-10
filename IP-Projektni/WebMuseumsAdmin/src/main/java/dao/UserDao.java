@@ -101,5 +101,18 @@ public class UserDao {
 		
 		return resultList;
 	}
+	
+	public static void  updateUserStatus(int userId,int statusId) {
+		Connection conn=DBConnection.getConnection();
+		try {
+			 PreparedStatement st = conn.prepareStatement("UPDATE user_person SET user_status_id = ? WHERE user_person_id = ?");
+			 st.setInt(1, statusId);
+			 st.setInt(2, userId);
+			 st.executeUpdate();
+			 st.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }
