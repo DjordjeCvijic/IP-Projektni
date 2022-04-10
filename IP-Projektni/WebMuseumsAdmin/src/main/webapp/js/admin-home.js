@@ -9,3 +9,6 @@ function addMuseum(){
 	window.location.assign("add-museum.jsp");
 
 }
+function openUsersAdministrationPage(){
+	window.location.assign("users.jsp");
+}

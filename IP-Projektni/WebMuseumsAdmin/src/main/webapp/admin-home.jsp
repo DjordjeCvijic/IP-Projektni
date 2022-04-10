@@ -21,10 +21,13 @@
 
 </head>
 <body>
+<button class="btn" onClick="openUsersAdministrationPage()">Users</button>
 <div class="main-div">
 	<div class="header-div">
 		<p>Museums :</p>
+		
 		<button class="btn" onClick="addMuseum()">Add museum</button>
+			
 	</div>
 	
 	<table>

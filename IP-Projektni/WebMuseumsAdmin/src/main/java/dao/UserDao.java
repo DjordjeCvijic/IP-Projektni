@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.List;
 
 import dto.RoleDto;
 import dto.UserDto;
@@ -26,7 +28,7 @@ public class UserDao {
 	           
 				  System.out.println(rs.getString("username"));
 				  user.setUserId(rs.getInt("user_person_id"));
-				  user.setActive(rs.getBoolean("active"));
+				  user.setUserStatusId(rs.getInt("user_status_id"));
 				  user.setEmail(rs.getString("email"));
 				  user.setFirstName(rs.getString("first_name"));
 				  user.setLastName(rs.getString("last_name"));
@@ -65,6 +67,39 @@ public class UserDao {
 		
 		return user;
 		
+	}
+	
+	public static List<UserDto> getAllUsers(){
+		List<UserDto> resultList=new LinkedList<>();
+		Connection conn=DBConnection.getConnection();
+		try {
+			
+			 Statement statement = conn.createStatement();
+			 
+			 ResultSet rs=statement.executeQuery("SELECT * FROM user_person");
+			  while ( rs.next() ) {
+	           UserDto user=new UserDto();
+	           
+				  user.setUserId(rs.getInt("user_person_id"));
+				  user.setUserStatusId(rs.getInt("user_status_id"));
+				  user.setEmail(rs.getString("email"));
+				  user.setFirstName(rs.getString("first_name"));
+				  user.setLastName(rs.getString("last_name"));
+				  user.setPassword(rs.getString("password"));
+				  user.setUsername(rs.getString("username"));
+				  user.setToken(rs.getString("token"));
+				  resultList.add(user);
+		         }
+		         rs.close();
+		         statement.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return resultList;
 	}
 
 }

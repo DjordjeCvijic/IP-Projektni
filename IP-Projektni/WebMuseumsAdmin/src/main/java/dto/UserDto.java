@@ -9,9 +9,9 @@ public class UserDto {
     private String lastName;
     private String email;
     private String password;
-    private boolean active=true;
     private String token;
     private boolean isAdmin;
+    private Integer userStatusId;
 	public Integer getUserId() {
 		return userId;
 	}
@@ -48,12 +48,6 @@ public class UserDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isActive() {
-		return active;
-	}
-	public void setActive(boolean active) {
-		this.active = active;
-	}
 	public String getToken() {
 		return token;
 	}
@@ -66,7 +60,12 @@ public class UserDto {
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	public Integer getUserStatusId() {
+		return userStatusId;
+	}
+	public void setUserStatusId(Integer userStatusId) {
+		this.userStatusId = userStatusId;
+	}
     
-
 
 }
