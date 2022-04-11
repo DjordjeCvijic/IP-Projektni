@@ -18,11 +18,15 @@ export class VirtualTourCardComponent implements OnInit {
 
   public buyTicket(virtualTourId:number){
     this.matDialog.open(BuyTicketModalComponent, {
-      width: '600px'
+      width: '400px',
+      data:{virtualTourId:this.virtualTour.virtualTourId}
     })
       .afterClosed()
       .subscribe(result => {
        console.log("resltat :",result)
+       if(result){
+         this.virtualTour.purchasedByUser=true;
+       }
       });
   }
 
