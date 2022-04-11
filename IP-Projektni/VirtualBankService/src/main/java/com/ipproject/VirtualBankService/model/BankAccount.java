@@ -36,14 +36,17 @@ public class BankAccount {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@Column(name = "card_number")
+	@Column(name = "card_number", unique = true)
 	private String cardNumber;
 	
 	@Column(name = "expiration_date")
 	private String expirationDate;
 	
-	@Column(name = "pin_number")
+	@Column(name = "pin_number", unique = true)
 	private Integer pinNumber;
+	
+	@Column(name = "account_balance")
+	private Double accountBalance;
 	
 	@ManyToOne
 	@JoinColumn(name = "card_type_id",nullable = false)
