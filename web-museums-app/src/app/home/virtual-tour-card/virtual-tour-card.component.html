@@ -2,8 +2,8 @@
     <p>Name: {{virtualTour.name}}</p>
     <p>Start in: {{virtualTour.startDateTime}}</p>
     <p>Duration: {{virtualTour.duration}}h</p>
-    <button *ngIf="virtualTour.purchasedByUser==false" (click)="buyTicket(virtualTour.virtualTourId)">Kupi</button>
-    <p class="info" *ngIf="!virtualTour.purchasedByUser">Kupljena karta</p>
+    <button *ngIf="!virtualTour.purchasedByUser" (click)="buyTicket(virtualTour.virtualTourId)">Buy ticket</button>
+    <p class="info" *ngIf="virtualTour.purchasedByUser">Kupljena karta</p>
 
    
 </div>

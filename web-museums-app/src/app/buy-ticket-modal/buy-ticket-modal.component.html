@@ -1,0 +1,28 @@
+<h1>Enter data:</h1>
+<div>
+    <form [formGroup]="form" class="form">
+        <mat-form-field>
+            <input matInput type="text" placeholder="First name" formControlName="firstName" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Last name" formControlName="lastName" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Card number" formControlName="cardNumber" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Card type" formControlName="cardType" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Expiration date" formControlName="expirationDate" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Pin" formControlName="pin" required>
+        </mat-form-field>
+       
+    </form>
+</div>
+<div class="buttons-div">
+    <button mat-button (click)="close()" >Ne</button>
+    <button mat-button (click)="confirm(form)" [disabled]="form.invalid">Da</button>
+</div>

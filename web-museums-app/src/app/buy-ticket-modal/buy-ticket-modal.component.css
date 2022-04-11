@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+button {
+  background-color: dodgerblue;
+  margin: 20px;
+  width: 100px;
+}
+.buttons-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
+import { BuyTicketModalComponent } from './buy-ticket-modal/buy-ticket-modal.component';
+import { AppMaterialModule } from './app-material/app-material.module';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BuyTicketModalComponent
   ],
   imports: [
     BrowserModule,
@@ -17,8 +21,13 @@ import { NgChartsModule } from 'ng2-charts';
     BrowserAnimationsModule,
     HttpClientModule,
     NgChartsModule,
+    AppMaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    BuyTicketModalComponent
+  ]
 })
 export class AppModule { }

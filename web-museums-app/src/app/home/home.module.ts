@@ -11,6 +11,8 @@ import { VirtualTourCardComponent } from './virtual-tour-card/virtual-tour-card.
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import { UsersInfoComponent } from './users-info/users-info.component';
+import { BuyTicketModalComponent } from '../buy-ticket-modal/buy-ticket-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -29,7 +31,11 @@ import { UsersInfoComponent } from './users-info/users-info.component';
     AppMaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgChartsModule
+    NgChartsModule,
+    MatDialogModule
+  ],
+  entryComponents:[
+    BuyTicketModalComponent
   ]
 })
 export class HomeModule { }
