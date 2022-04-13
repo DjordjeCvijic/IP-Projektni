@@ -17,6 +17,7 @@ public interface UserPersonRepository extends JpaRepository<UserPerson, Integer>
 	long countByToken(String token);
 	long countByUserStatus(UserStatus userStatus);
 	Optional<UserPerson> findByToken(String token);
+	Optional<UserPerson> findByUserPersonId(Integer userPersonId);
 	
 
 }

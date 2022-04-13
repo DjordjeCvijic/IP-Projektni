@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BuyTicketService } from '../global-services/buy-ticket.service';
+import { LocalStorageService } from '../global-services/local-storage.service';
 import { PaymentRequest } from '../model/payment-request.model';
 
 
@@ -18,6 +19,7 @@ export class BuyTicketModalComponent implements OnInit {
   constructor(private dialogRef:MatDialogRef<BuyTicketModalComponent>,
     private formGroupBuilder:FormBuilder,private buyTicetService:BuyTicketService ,
     private snackBar:MatSnackBar,
+    private localStorageService:LocalStorageService,
     @Inject(MAT_DIALOG_DATA) data: any) { 
       this.virtualTourId=data.virtualTourId;
     }
@@ -40,7 +42,7 @@ export class BuyTicketModalComponent implements OnInit {
   confirm(form:any){
     console.log("proslijedjena vrijednosti ",this.virtualTourId)
     var requestBody:PaymentRequest=new PaymentRequest(form.value.firstName,form.value.lastName,form.value.cardNumber,
-      form.value.cardType,form.value.expirationDate,form.value.pin,this.virtualTourId,100.00)
+      form.value.cardType,form.value.expirationDate,form.value.pin,this.virtualTourId,this.localStorageService.getUserIdFromToken(),100.00)
     this.buyTicetService.buyTicket(requestBody).subscribe({
         next:data=>{
           this.snackBar.open(data.description.toString(),undefined,{duration:2000});

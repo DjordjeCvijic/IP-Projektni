@@ -18,6 +18,7 @@ public class PaymentRequestDto {
 	private String expirationDate;
 	private Integer pin;
 	private Integer virtualTourId;
+	private Integer userId;
 	private Double amount;
 
 }

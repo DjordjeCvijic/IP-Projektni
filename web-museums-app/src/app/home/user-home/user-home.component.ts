@@ -24,7 +24,7 @@ export class UserHomeComponent implements OnInit {
     private formBuilder:FormBuilder,private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
-    this.isAdmin=this.localStorageService.getUserRoleFromLocalStorage();
+    this.isAdmin=this.localStorageService.getUserIsAdminFromToken();
     this.getMuseums();
   
   }

@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
         }
         else if(result.status==1){
           this.localStorageService.saveUserTokenToLocalStorage(result.data);
-          this.localStorageService.saveUserRoleToLocalStorage(result.admin as boolean)
           this.snackBar.open("uspijesno ste se ulogovali",undefined, {
             duration: 2000
           });

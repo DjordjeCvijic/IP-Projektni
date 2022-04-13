@@ -6,6 +6,7 @@ export class PaymentRequest{
     expirationDate:String;
     pin:number;
     virtualTourId:number;
+    userId:number;
     amount:number;
 
 
@@ -16,6 +17,7 @@ export class PaymentRequest{
         expirationDate:String,
         pin:number,
         virtualTourId:number,
+        userId:number,
         amount:number){
             this.amount=amount;
             this.cardNumber=cardNumber;
@@ -24,7 +26,8 @@ export class PaymentRequest{
             this.firstName=firstName;
             this.lastName=lastName;
             this.pin=pin;
-            this.virtualTourId=virtualTourId
+            this.virtualTourId=virtualTourId;
+            this.userId=userId;
 
     }
 }

@@ -109,6 +109,10 @@ public class UserPersonService {
 		return Long.valueOf(userPersonRepository.countByUserStatus(userStatusService.getUserStatusById(2))).intValue();
 	}
 	
+	public UserPerson getUserPersonById(Integer id) {
+		return userPersonRepository.findByUserPersonId(id).get();
+	}
+	
 	
 
 }

@@ -41,6 +41,9 @@ public class VirtualTourService {
 		
 		return virtualTourRepository.findAllByMuseum(museumService.getByMuseumId(museumId));
 	}
+	public VirtualTour getVirtualTourById(Integer id) {
+		return virtualTourRepository.findByVirtualTourId(id).get();
+	}
 	
 	
 	
