@@ -3,7 +3,7 @@
     <p>Start in: {{virtualTour.startDateTime}}</p>
     <p>Duration: {{virtualTour.duration}}h</p>
     <button mat-button *ngIf="!virtualTour.purchasedByUser" (click)="buyTicket(virtualTour.virtualTourId) ">Buy ticket</button>
-    <p class="info" *ngIf="virtualTour.purchasedByUser">Kupljena karta</p>
+    <p class="info" *ngIf="virtualTour.purchasedByUser">Ticket purchased</p>
 
    
 </div>

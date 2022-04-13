@@ -24,6 +24,8 @@ public class MuseumService {
 	private VirtualTourService virtualTourService;
 	@Autowired
 	private WeatherService weatherService;
+	@Autowired
+	private VirtualTourTicketService virtualTourTicketService;
 
 	public List<MuseumResponseDto> getAll() {
 		List<Museum> museumsFromStorage=museumRepository.findAll();
@@ -35,7 +37,7 @@ public class MuseumService {
 	public Museum getByMuseumId(Integer museumId) {
 		return museumRepository.findByMuseumId(museumId).get();
 	}
-	public MuseumWithVirtualToursDto getMuseumWithVirtualTours(Integer museumId, String userToken) {
+	public MuseumWithVirtualToursDto getMuseumWithVirtualTours(Integer museumId,Integer userId) {
 		MuseumWithVirtualToursDto result=new MuseumWithVirtualToursDto();
 		
 		Museum museum=museumRepository.findByMuseumId(museumId).get();
@@ -48,12 +50,15 @@ public class MuseumService {
 		result.setMuseumType(museum.getMuseumType().getName());
 		result.setName(museum.getName());
 		result.setPhoneNumber(museum.getPhoneNumber());
+		
 		List<VirtualTour>virtualTourList=virtualTourService.getVirtualTourOfMuseum(museumId);
 		virtualTourList.forEach(element->{
 			VirtualTourResponseDto virtualTourResponseDto=new VirtualTourResponseDto();
 			virtualTourResponseDto.setName(element.getName());
 			virtualTourResponseDto.setDuration(element.getDuration());
-			virtualTourResponseDto.setPurchasedByUser(false);//oov treba implementirati
+			
+			virtualTourResponseDto.setPurchasedByUser(virtualTourTicketService.userBuyTicketForVirtualTour(userId, element.getVirtualTourId()));//oov treba implementirati
+			
 			virtualTourResponseDto.setStartDateTime(element.getStartDateTime().format(DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy")));
 			virtualTourResponseDto.setVirtualTourId(element.getVirtualTourId());
 			virtualTourResponseDto.setYoutubeUrl(element.getYoutubeUrl());

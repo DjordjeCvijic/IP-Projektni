@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ipproject.WebMuseums.dto.VirtualTourTicketDto;
+import com.ipproject.WebMuseums.model.UserPerson;
+import com.ipproject.WebMuseums.model.VirtualTour;
 import com.ipproject.WebMuseums.model.VirtualTourTicket;
 import com.ipproject.WebMuseums.repository.VirtualTourTicketRepository;
 
@@ -38,5 +40,12 @@ public class VirtualTourTicketService {
 		
 
 		emailSenderService.sendEmailWithAttachment(savedTicket);
+	}
+	public boolean userBuyTicketForVirtualTour(Integer userId,Integer virtualTourId) {
+		
+		UserPerson user=userPersonService.getUserPersonById(userId);
+		VirtualTour virtualTour=virtualTourService.getVirtualTourById(virtualTourId);
+		return virtualTourTicketRepository.countByUserPersonAndVirtualTour(user, virtualTour)>0;
+	
 	}
 }

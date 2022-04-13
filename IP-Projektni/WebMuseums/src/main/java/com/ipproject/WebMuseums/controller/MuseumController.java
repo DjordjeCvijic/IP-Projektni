@@ -25,8 +25,8 @@ public class MuseumController {
 		return museumService.getAll();
 	}
 	@GetMapping("")
-	public MuseumWithVirtualToursDto getMuseum(@RequestParam("museumId") Integer museumId,@RequestParam("token")String userToken) {
-		return museumService.getMuseumWithVirtualTours(museumId,userToken);
+	public MuseumWithVirtualToursDto getMuseum(@RequestParam("museumId") Integer museumId,@RequestParam("userId")Integer userId) {
+		return museumService.getMuseumWithVirtualTours(museumId,userId);
 	}
 
 }
