@@ -18,9 +18,10 @@ public class VirtualTourTicketService {
 	private UserPersonService userPersonService;
 	@Autowired
 	private VirtualTourService virtualTourService;
+	@Autowired
+	private EmailSenderService emailSenderService;
 
 	public void addVirtualTourTicket(VirtualTourTicketDto virtualTourTicketDto) {
-		System.out.println(virtualTourTicketDto.getUserId()+"  "+virtualTourTicketDto.getVirtualTourId());
 		VirtualTourTicket ticket=new VirtualTourTicket();
 		
 		Random random=new Random();
@@ -33,9 +34,9 @@ public class VirtualTourTicketService {
 		ticket.setVirtualTour(virtualTourService.getVirtualTourById(virtualTourTicketDto.getVirtualTourId()));
 		
 		
-		virtualTourTicketRepository.save(ticket);
+		VirtualTourTicket savedTicket=virtualTourTicketRepository.save(ticket);
 		
-				
-		
+
+		emailSenderService.sendEmailWithAttachment(savedTicket);
 	}
 }

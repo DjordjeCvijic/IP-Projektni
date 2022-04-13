@@ -17,6 +17,7 @@ export class VirtualTourCardComponent implements OnInit {
   }
 
   public buyTicket(virtualTourId:number){
+    
     this.matDialog.open(BuyTicketModalComponent, {
       width: '400px',
       data:{virtualTourId:this.virtualTour.virtualTourId}

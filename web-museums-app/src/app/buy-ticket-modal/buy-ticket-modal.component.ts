@@ -40,6 +40,7 @@ export class BuyTicketModalComponent implements OnInit {
   }
 
   confirm(form:any){
+    this.snackBar.open("Data processing in progress",undefined,{duration:2000})
     console.log("proslijedjena vrijednosti ",this.virtualTourId)
     var requestBody:PaymentRequest=new PaymentRequest(form.value.firstName,form.value.lastName,form.value.cardNumber,
       form.value.cardType,form.value.expirationDate,form.value.pin,this.virtualTourId,this.localStorageService.getUserIdFromToken(),100.00)
