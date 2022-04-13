@@ -71,7 +71,8 @@ public class AuthController {
 	        	return new AuthenticationResponse("3", user.getUserStatus().getUserStatusName(),false);
 	        }
 	        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-	        final String jwt = jwtUtil.generateToken(userDetails);
+	        UserPersonRole userRole=userPersonRoleService.findByUserPerson(user).get(0);
+	        final String jwt = jwtUtil.generateToken(userDetails,user.getUserPersonId(),userRole.getRole().getRoleId().intValue()==1);
 	        
 	      //cuvanje tokena
 	       userPersonService.saveToken(authenticationRequest.getUsername(),jwt);

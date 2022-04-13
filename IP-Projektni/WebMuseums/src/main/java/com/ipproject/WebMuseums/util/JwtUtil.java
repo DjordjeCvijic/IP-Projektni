@@ -40,8 +40,10 @@ public class JwtUtil {
 		return extractExpiration(token).before(new Date());
 	}
 
-	public String generateToken(UserDetails userDetails) {
+	public String generateToken(UserDetails userDetails,Integer userId,boolean admin) {
 		Map<String, Object> claims = new HashMap<>();
+		claims.put("userId", userId);
+		claims.put("isAdmin", admin);
 		return createToken(claims, userDetails.getUsername());
 	}
 

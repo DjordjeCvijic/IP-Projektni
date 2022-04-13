@@ -14,6 +14,7 @@ public class AuthUserDetails implements UserDetails{
 	private String username;
 	private String password;
 	private boolean active;
+
 	private List<GrantedAuthority> authorities;
 
 	public AuthUserDetails() {
@@ -23,6 +24,7 @@ public class AuthUserDetails implements UserDetails{
 		this.username = user.get().getUsername();
 		this.password = user.get().getPassword();
 		this.active = true;
+
 		this.authorities = userRoles.stream().map(e -> new SimpleGrantedAuthority(e.getRole().getName()))
 				.collect(Collectors.toList());
 	}
@@ -61,5 +63,7 @@ public class AuthUserDetails implements UserDetails{
 	public boolean isEnabled() {
 		return active;
 	}
+	
+
 
 }
