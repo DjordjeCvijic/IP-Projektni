@@ -1,5 +1,10 @@
 package com.ipproject.WebMuseums.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +48,38 @@ public class VirtualTourService {
 	}
 	public VirtualTour getVirtualTourById(Integer id) {
 		return virtualTourRepository.findByVirtualTourId(id).get();
+	}
+
+	public List<VirtualTour> getVirtualToursThatStartInOneHour() {
+		LocalDateTime currentDateTime=LocalDateTime.now();
+		String string=currentDateTime.plusHours(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")); 
+	    TemporalAccessor ta = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").parse(string);
+	    LocalDateTime startOfTour = LocalDateTime.from(ta);
+
+		List<VirtualTour>result=virtualTourRepository.findAllByStartDateTime(startOfTour);
+		result.forEach(e->System.out.println("Pocinje za jedan sat:"+e.getName()));
+		return result;
+	}
+	
+	public List<VirtualTour> getVirtualToursThatEndInFiveMinutes() {
+		List<VirtualTour>result=new LinkedList<>();
+		List<VirtualTour>virtualToursThetStarted=virtualTourRepository.findAllByStartDateTimeBefore(LocalDateTime.now());
+		
+		
+		LocalDateTime currentDateTime=LocalDateTime.now();
+		String string=currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")); 
+	    TemporalAccessor ta = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").parse(string);
+	    LocalDateTime currentDateTimeWithNoSecond = LocalDateTime.from(ta);
+
+
+		virtualToursThetStarted.forEach(e->{
+			if(currentDateTimeWithNoSecond.equals(e.getStartDateTime().plusHours(e.getDuration()).minusMinutes(5))) {
+				System.out.println("Zavrsava za 5 minuta "+e.getName());
+				result.add(e);
+			}
+		});
+		return result;
+		
 	}
 	
 	

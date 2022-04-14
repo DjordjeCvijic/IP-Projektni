@@ -1,5 +1,6 @@
 package com.ipproject.WebMuseums.service;
 
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,8 @@ public class VirtualTourTicketService {
 		VirtualTour virtualTour=virtualTourService.getVirtualTourById(virtualTourId);
 		return virtualTourTicketRepository.countByUserPersonAndVirtualTour(user, virtualTour)>0;
 	
+	}
+	public List<VirtualTourTicket> getAllTicketForVirtualTour(VirtualTour virtualTour){
+		return virtualTourTicketRepository.findAllByVirtualTour(virtualTour);
 	}
 }

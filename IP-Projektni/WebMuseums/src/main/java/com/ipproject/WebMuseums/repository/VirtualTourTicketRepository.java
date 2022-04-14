@@ -1,5 +1,7 @@
 package com.ipproject.WebMuseums.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,5 +14,5 @@ public interface VirtualTourTicketRepository extends JpaRepository<VirtualTourTi
 
 	int countByTicketNumber(Long ticketNumber);
 	int countByUserPersonAndVirtualTour(UserPerson userPerson,VirtualTour virtualTour);
-
+	List<VirtualTourTicket> findAllByVirtualTour(VirtualTour virtualTour);
 }
