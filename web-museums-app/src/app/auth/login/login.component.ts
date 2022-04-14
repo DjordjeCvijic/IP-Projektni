@@ -34,13 +34,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(form.value.username,form.value.password).subscribe({
       next:result=>{
         if(result.status==2){
-          this.snackBar.open("kredincijalni nisu validni",undefined,{duration:2000})
+          this.snackBar.open("Credentials are not valid!",undefined,{duration:2000})
         }else if(result.status==3){
           this.snackBar.open("ACCOUNT STATUS: "+result.data,undefined,{duration:2000})
         }
         else if(result.status==1){
           this.localStorageService.saveUserTokenToLocalStorage(result.data);
-          this.snackBar.open("uspijesno ste se ulogovali",undefined, {
+          this.snackBar.open("You have successfully logged in",undefined, {
             duration: 2000
           });
           this.router.navigate(["/home"]);

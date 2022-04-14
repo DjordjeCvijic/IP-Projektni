@@ -14,15 +14,15 @@ import { MuseumService } from '../services/museum.service';
 })
 export class HomeComponent implements OnInit {
 
- 
- 
-
+  public isAdmin:boolean=false;
+  public loggedInUser:string=""; 
   constructor(private  authService:AuthService,private  localStorageService:LocalStorageService,
     private snackBar:MatSnackBar
    ) { }
 
   ngOnInit(): void {
-    
+    this.isAdmin=this.localStorageService.getUserIsAdminFromToken();
+    this.loggedInUser=this.localStorageService.getUsernameFromToken();
   }
 
   public logout(){

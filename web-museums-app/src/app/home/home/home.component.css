@@ -16,19 +16,30 @@ h1 {
 
 .logout-link {
   font-size: 20px;
-  position: absolute;
-  right: 5%;
+  margin-left: 50px;
 }
 .toolbar-link {
   font-size: 20px;
-  margin-left: 130px;
+  margin-right: 50px;
 }
 .home-link {
   font-size: 33px;
+  margin-right: 130px;
 }
 
 .toolbar-link:hover,
 .logout-link:hover,
 .home-link:hover {
   color: yellow;
+}
+.log-out-div {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  right: 5%;
+  align-items: center;
+}
+
+span {
+  font-size: 20px;
 }

@@ -1,9 +1,12 @@
 <mat-toolbar class="toolbar">
     <mat-toolbar-row>
         <a routerLink="/home" class="home-link">Web Museum</a>
-        <a routerLink="" class="logout-link"  (click)="logout()">Log out</a>
-        <a  (click)="openAdminApp()" class="toolbar-link ">Admin App</a>
+        <a *ngIf="isAdmin"  (click)="openAdminApp()" class="toolbar-link ">Admin App</a>
         <a  routerLink="/news" class="toolbar-link ">News</a>
+        <div class="log-out-div">
+          <a routerLink="" class="logout-link"  (click)="logout()">Log out</a>
+          <span>User: {{loggedInUser}}</span>
+        </div>
       </mat-toolbar-row>
     </mat-toolbar>
 

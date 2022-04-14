@@ -33,17 +33,17 @@ export class SignUpComponent implements OnInit {
 
   public singUp(form:any){
     if(form.value.firstPassword!=form.value.secondPassword){
-      this.snackBar.open("Lozinke nisu iste",undefined,{duration:2000})
+      this.snackBar.open("Please enter identical passwords",undefined,{duration:2000})
     }else{
       
       this.authService.singUp(form.value.firstName,form.value.lastName,form.value.username,form.value.email,form.value.firstPassword).subscribe({
       next:data=>{
         if(data.status=="2"){
-          this.snackBar.open("korisnicko ime postoji",undefined,{duration:2000})
+          this.snackBar.open("Username already taken",undefined,{duration:2000})
         }else if(data.status=="3"){
-          this.snackBar.open("email ime postoji",undefined,{duration:2000})
+          this.snackBar.open("Email already taken",undefined,{duration:2000})
         }else if(data.status=="1"){
-          this.snackBar.open("uspijesno ste se registrovali",undefined,{duration:2000});
+          this.snackBar.open("You have successfully signed up",undefined,{duration:2000});
           this.router.navigate(["auth/login"]);
         }
       }
