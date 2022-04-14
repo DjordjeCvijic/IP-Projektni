@@ -25,6 +25,7 @@
 	<button class="btn" onclick="goBack()">Back</button>
 	<div class="main-div">
 		<div class="header-div">
+			<span id="informations"> </span>	
 			<p>Users :</p>				
 		</div>
 		
@@ -36,7 +37,7 @@
 				<th>Username</th>
 				<th>Email</th>
 				<th>User status</th>
-				<th>Save</th>
+				<th>User Password</th>
 				
 			</tr>
 			<% for(UserInfoBean user:UserService.getUsers()){ %>
@@ -52,9 +53,10 @@
 						<option value="2" <%if(user.getUserStatusId()==2){ %>selected<%} %>>Approved</option>
 						<option value="3"<%if(user.getUserStatusId()==3){ %>selected<%} %>>Blocked</option>
 					</select>
-				</td>
-				<td>
 					<button disabled="disabled" id="button<%= user.getUserId()%>" onclick="saveUserStatus('select<%= user.getUserId()%>',<%= user.getUserId()%>)" >SAVE</button>
+				</td>	
+				<td>
+					<button   onclick="resetPassword('<%= user.getUserId()%>','<%= user.getUsername()%>')" >Reset password</button>
 				</td>
 			</tr>
 			<%} %>

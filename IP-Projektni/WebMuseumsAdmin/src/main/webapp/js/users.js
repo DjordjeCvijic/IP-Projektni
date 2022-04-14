@@ -16,3 +16,16 @@ function saveUserStatus(selectId,userId){
 function goBack(){
 	window.location.assign("admin-home.jsp");
 }
+function resetPassword(userId,username){
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function(){
+        if((request.readyState==4)&&(request.status==200)){
+           
+        }
+    }
+
+    request.open("GET","http://localhost:1123/user-info/change-password?userId="+userId,true);
+    request.send(null);
+     document.getElementById("informations").innerHTML="";
+    document.getElementById("informations").innerHTML="User "+username+" has a new password";
+}

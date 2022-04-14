@@ -1,12 +1,14 @@
 package com.ipproject.WebMuseums.service;
 
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ipproject.WebMuseums.compositekey.UserPersonRoleKey;
+import com.ipproject.WebMuseums.dto.EmailRequestDto;
 import com.ipproject.WebMuseums.dto.UserPersonDto;
 import com.ipproject.WebMuseums.dto.UserPersonResponseDto;
 import com.ipproject.WebMuseums.model.Role;
@@ -30,6 +32,8 @@ public class UserPersonService {
 	 private  UserPersonRoleRepository userPersonRoleRepository;
 	 @Autowired
 	 private UserStatusService userStatusService;
+	 @Autowired
+	 private EmailSenderService emailSenderService;
 
 	public Optional<UserPerson> getUserPersonByUsername(String username) {
 		return userPersonRepository.findByUsername(username);
@@ -111,6 +115,31 @@ public class UserPersonService {
 	
 	public UserPerson getUserPersonById(Integer id) {
 		return userPersonRepository.findByUserPersonId(id).get();
+	}
+
+	public boolean changePassword(Integer userId) {
+		boolean result=false;
+		try {
+			 String alphabet = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				String newPassword="";
+				Random r = new Random();
+				for (int i = 0; i < 10; i++) {
+			        newPassword=newPassword+alphabet.charAt(r.nextInt(alphabet.length()));
+			    } 
+				
+				UserPerson user=userPersonRepository.findByUserPersonId(userId).get();
+				user.setPassword(passwordEncoder.encode(newPassword));
+				userPersonRepository.save(user);
+				EmailRequestDto emailRequestDto=new EmailRequestDto();
+				emailRequestDto.setReceiverEmail(user.getEmail());
+				emailRequestDto.setMailSubject("New password for WebMuseumApp");
+				emailRequestDto.setMailBody("Your new password is: "+newPassword);
+				emailSenderService.sendSimpleEmail(emailRequestDto);
+				result=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	
