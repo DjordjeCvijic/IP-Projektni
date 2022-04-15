@@ -1,1 +1,16 @@
-<p *ngFor="let element of virtualTourList"> {{element.name}}</p>
+<h1 class="title">Your virtual tours:</h1>
+
+<div class="main-div">
+    <div class="first-column">
+        <div class="virtual-tour-card" *ngFor="let element of virtualTourList">
+            <p>Name: {{element.name}}</p>
+            <p>Start in: {{element.startDateTime}}</p>
+            <p>Duration: {{element.duration}}h</p>
+            <button mat-button [disabled]="!element.started" (click)="showVirtualTour(element.virtualTourId)" >Show</button>
+
+        </div>
+    </div>
+    <div class="second-column">
+        
+    </div>
+</div>

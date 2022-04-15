@@ -30,4 +30,8 @@ export class VirtualToursComponent implements OnInit {
     })
   }
 
+  showVirtualTour(virtualTourId:number){
+    console.log("pusti video",virtualTourId)
+  }
+
 }
