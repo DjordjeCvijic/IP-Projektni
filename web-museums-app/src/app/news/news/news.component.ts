@@ -15,19 +15,27 @@ import { LocalStorageService } from 'src/app/global-services/local-storage.servi
 })
 export class NewsComponent implements OnInit {
 
-  constructor(private  authService:AuthService,private localStorageService:LocalStorageService,
-    private snackBar:MatSnackBar,private newsService:NewsService) { }
-
+  public isAdmin:boolean=false;
+  public loggedInUser:string="";
   public newsData:Array<News>=new Array();
+  constructor(
+    private  authService:AuthService,
+    private localStorageService:LocalStorageService,
+    private snackBar:MatSnackBar,
+    private newsService:NewsService) { }
+
+ 
 
   ngOnInit(): void {
     this.getDataFromRSS();
-      this.newsService.getNewsData();
+      //this.newsService.getNewsData();
+      this.isAdmin=this.localStorageService.getUserIsAdminFromToken();
+      this.loggedInUser=this.localStorageService.getUsernameFromToken();
   }
 
   public logout(){
     this.authService.logOut();
-    this.snackBar.open("izlogovani ste",undefined,{duration:2000})
+    this.snackBar.open("izlogovani ste",undefined,{duration:2000});
   }
   public openAdminApp(){
     window.open(AppConst.ADMIN_APP_URL+"?token="+this.localStorageService.getUserTokenFromLocalStorage(), "_blank");

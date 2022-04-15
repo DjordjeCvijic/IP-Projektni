@@ -17,5 +17,5 @@ public class VirtualTourResponseDto {
 	private Integer duration;
 	private String youtubeUrl;
 	private boolean purchasedByUser;
-
+	private boolean started;
 }

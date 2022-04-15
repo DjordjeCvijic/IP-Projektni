@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ipproject.WebMuseums.dto.VirtualTourRequestDto;
+import com.ipproject.WebMuseums.dto.VirtualTourResponseDto;
 import com.ipproject.WebMuseums.model.Museum;
 import com.ipproject.WebMuseums.model.VirtualTour;
+import com.ipproject.WebMuseums.model.VirtualTourTicket;
 import com.ipproject.WebMuseums.repository.VirtualTourRepository;
 
 @Service
@@ -22,6 +24,10 @@ public class VirtualTourService {
 	private VirtualTourRepository virtualTourRepository;
 	@Autowired
 	private MuseumService museumService;
+	@Autowired
+	private VirtualTourTicketService virtualTourTicketService;
+	@Autowired
+	private UserPersonService userPersonService;
 
 	public List<VirtualTour> getAll() {
 		return virtualTourRepository.findAll();
@@ -80,6 +86,32 @@ public class VirtualTourService {
 		});
 		return result;
 		
+	}
+
+	public List<VirtualTourResponseDto> getAllByUserId(Integer userId) {
+		List<VirtualTourResponseDto> resultList=new LinkedList<>();
+		List<VirtualTourTicket> virtualTourTicektOfUser=virtualTourTicketService.getAllByUser(userPersonService.getUserPersonById(userId));
+		for(VirtualTourTicket ticket:virtualTourTicektOfUser) {
+			if(ticket.getVirtualTour().getStartDateTime().plusHours(ticket.getVirtualTour().getDuration()).isAfter(LocalDateTime.now())) {//kraj im je poslije sadasnjeg vremena
+				VirtualTourResponseDto virtualTourResponseDto=new VirtualTourResponseDto();
+				virtualTourResponseDto.setDuration(ticket.getVirtualTour().getDuration());
+				virtualTourResponseDto.setName(ticket.getVirtualTour().getName());
+				virtualTourResponseDto.setPurchasedByUser(true);
+				virtualTourResponseDto.setStartDateTime(ticket.getVirtualTour().getStartDateTime().format(DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy")));
+				virtualTourResponseDto.setVirtualTourId(ticket.getVirtualTour().getVirtualTourId());
+				virtualTourResponseDto.setYoutubeUrl(ticket.getVirtualTour().getYoutubeUrl());
+				virtualTourResponseDto.setStarted(ticket.getVirtualTour().getStartDateTime().isBefore(LocalDateTime.now()));
+				resultList.add(virtualTourResponseDto);
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		return resultList;
 	}
 	
 	

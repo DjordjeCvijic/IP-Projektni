@@ -13,6 +13,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { UsersInfoComponent } from './users-info/users-info.component';
 import { BuyTicketModalComponent } from '../buy-ticket-modal/buy-ticket-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { VirtualToursComponent } from './virtual-tours/virtual-tours.component';
 
 
 
@@ -24,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MuseumComponent,
     VirtualTourCardComponent,
     UsersInfoComponent,
+    VirtualToursComponent,
   ],
   imports: [
     CommonModule,

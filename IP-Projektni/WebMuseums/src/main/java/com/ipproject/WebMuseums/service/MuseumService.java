@@ -58,7 +58,7 @@ public class MuseumService {
 			virtualTourResponseDto.setDuration(element.getDuration());
 			
 			virtualTourResponseDto.setPurchasedByUser(virtualTourTicketService.userBuyTicketForVirtualTour(userId, element.getVirtualTourId()));//oov treba implementirati
-			
+			virtualTourResponseDto.setStarted(false);
 			virtualTourResponseDto.setStartDateTime(element.getStartDateTime().format(DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy")));
 			virtualTourResponseDto.setVirtualTourId(element.getVirtualTourId());
 			virtualTourResponseDto.setYoutubeUrl(element.getYoutubeUrl());

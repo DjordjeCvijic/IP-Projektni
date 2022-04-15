@@ -3,12 +3,13 @@
         <a routerLink="/home" class="home-link">Web Museum</a>
         <a *ngIf="isAdmin"  (click)="openAdminApp()" class="toolbar-link ">Admin App</a>
         <a  routerLink="/news" class="toolbar-link ">News</a>
+        <a  routerLink="/home/virtual-tours" class="toolbar-link ">My virtual tours</a>
         <div class="log-out-div">
           <a routerLink="" class="logout-link"  (click)="logout()">Log out</a>
           <span>User: {{loggedInUser}}</span>
         </div>
       </mat-toolbar-row>
-    </mat-toolbar>
+</mat-toolbar>
 
 
 <router-outlet></router-outlet>

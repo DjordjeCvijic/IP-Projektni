@@ -6,6 +6,7 @@ export class VirtualTour{
     duration:number;
     youtubeUrl:String;
     purchasedByUser:boolean;
+    started:boolean;
 
     constructor(
         virtualTourId?:number,
@@ -13,7 +14,8 @@ export class VirtualTour{
         startDateTime?:String,
         duration?:number,
         youtubeUrl?:String,
-        purchasedByUser?:boolean
+        purchasedByUser?:boolean,
+        started?:boolean
     ){
         this.duration=duration||0;
         this.name=name||"";
@@ -21,6 +23,7 @@ export class VirtualTour{
         this.startDateTime=startDateTime||"";
         this.virtualTourId=virtualTourId||0;
         this.youtubeUrl=youtubeUrl||"";
+        this.started=started||false;
     }
 
 }

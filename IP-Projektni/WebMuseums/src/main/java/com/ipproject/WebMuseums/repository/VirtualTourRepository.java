@@ -18,5 +18,5 @@ public interface VirtualTourRepository extends JpaRepository<VirtualTour, Intege
 	Optional<VirtualTour> findByVirtualTourId(Integer virtualTourId);
 	List<VirtualTour> findAllByStartDateTime(LocalDateTime start);
 	List<VirtualTour> findAllByStartDateTimeBefore(LocalDateTime localDateTime);
-
+	List<VirtualTour> findAllByStartDateTimeAfter(LocalDateTime localDateTime);
 }

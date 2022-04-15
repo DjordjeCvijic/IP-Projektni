@@ -52,4 +52,8 @@ public class VirtualTourTicketService {
 	public List<VirtualTourTicket> getAllTicketForVirtualTour(VirtualTour virtualTour){
 		return virtualTourTicketRepository.findAllByVirtualTour(virtualTour);
 	}
+	public List<VirtualTourTicket> getAllByUser(UserPerson userPerson){
+		return virtualTourTicketRepository.findAllByUserPerson(userPerson);
+	}
+	
 }

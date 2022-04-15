@@ -15,4 +15,5 @@ public interface VirtualTourTicketRepository extends JpaRepository<VirtualTourTi
 	int countByTicketNumber(Long ticketNumber);
 	int countByUserPersonAndVirtualTour(UserPerson userPerson,VirtualTour virtualTour);
 	List<VirtualTourTicket> findAllByVirtualTour(VirtualTour virtualTour);
+	List<VirtualTourTicket> findAllByUserPerson(UserPerson userPerson);
 }
