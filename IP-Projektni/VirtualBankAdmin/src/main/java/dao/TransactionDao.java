@@ -19,7 +19,7 @@ public class TransactionDao {
 		Connection conn=DBConnection.getConnection();
 		try {
 			Statement st=conn.createStatement();
-			ResultSet rs=st.executeQuery("SELECT * FROM transactions");
+			ResultSet rs=st.executeQuery("SELECT * FROM transaction");
 			while(rs.next()) {
 				TransactionDto transactionDto=new TransactionDto();
 				transactionDto.setAmount(rs.getDouble("amount"));

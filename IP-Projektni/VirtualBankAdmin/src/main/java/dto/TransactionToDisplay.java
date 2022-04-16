@@ -10,6 +10,7 @@ public class TransactionToDisplay {
 	private String firstName;
 	private String lastName;
 	private String cardNumber;
+	
 	public Integer getTransactionId() {
 		return transactionId;
 	}

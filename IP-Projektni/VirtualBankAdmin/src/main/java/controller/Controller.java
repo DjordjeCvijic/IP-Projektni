@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.BankAccountBean;
+import beans.TransactionBean;
 
 /**
  * Servlet implementation class Controller
@@ -31,22 +32,20 @@ public class Controller extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println(request.getParameter("par"));
+
 		HttpSession session = request.getSession();
-		
-		BankAccountBean bankAccountBean=new BankAccountBean();
-		session.setAttribute("bankAccountBean", bankAccountBean);
-		
 		String address = "/WEB-INF/pages/login.jsp";
-		if(request.getParameter("par")!=null && request.getParameter("par").equals("druga")) {
+		String action=request.getParameter("action");
+		
+		if(action!=null && action.equals("transactions")) {
+			session.setAttribute("transactionBean", new TransactionBean());
 			System.out.println("usao");
-			address = "/WEB-INF/pages/druga.jsp";
+			address = "/WEB-INF/pages/transactions.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
 		dispatcher.forward(request, response);
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
