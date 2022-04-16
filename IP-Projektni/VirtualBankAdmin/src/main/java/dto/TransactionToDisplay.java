@@ -6,7 +6,7 @@ public class TransactionToDisplay {
 	
 	private Integer transactionId;
 	private Double amount;
-	private Timestamp time;
+	private String time;
 	private String firstName;
 	private String lastName;
 	private String cardNumber;
@@ -23,10 +23,10 @@ public class TransactionToDisplay {
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
-	public Timestamp getTime() {
+	public String getTime() {
 		return time;
 	}
-	public void setTime(Timestamp time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	public String getFirstName() {

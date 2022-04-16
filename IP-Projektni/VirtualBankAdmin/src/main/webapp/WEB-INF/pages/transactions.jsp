@@ -11,9 +11,13 @@
 <script src="js/transactions.js" type="text/javascript"></script>
 </head>
 <body>
-  <button class="btn" onclick="goBack()">Back</button>
+  	<div class="link-div">
+	<a href="?action=bank-accounts">Bank accounts</a><br>
+	<a href="?action=logout">Log out</a>
+	</div>
+ 
 	<div class="main-div">
-		<div class="header-div">	
+		<div >	
 			<p>Transactions :</p>				
 		</div>
 		

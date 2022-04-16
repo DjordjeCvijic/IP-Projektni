@@ -23,11 +23,12 @@ public class BankAccountDao {
 				bankAccountDto.setAccountBalance(rs.getDouble("account_balance"));
 				bankAccountDto.setBankAccountId(rs.getInt("bank_account_id"));
 				bankAccountDto.setCardNumber(rs.getString("card_number"));
-				bankAccountDto.setCardType("tip karte");
+				bankAccountDto.setCardType(CardTypeDao.getCardTypeById(rs.getInt("card_type_id")).getCardTypeName());
 				bankAccountDto.setExpirationDate(rs.getString("expiration_date"));
 				bankAccountDto.setFirstName(rs.getString("first_name"));
 				bankAccountDto.setLastName(rs.getString("last_name"));
 				bankAccountDto.setPinNumber(rs.getInt("pin_number"));
+				bankAccountDto.setActive(rs.getBoolean("active"));
 				resulList.add(bankAccountDto);
 				
 			}
@@ -51,7 +52,7 @@ public class BankAccountDao {
 				result.setAccountBalance(rs.getDouble("account_balance"));
 				result.setBankAccountId(rs.getInt("bank_account_id"));
 				result.setCardNumber(rs.getString("card_number"));
-				result.setCardType("tip karte");
+				result.setCardType(CardTypeDao.getCardTypeById(rs.getInt("card_type_id")).getCardTypeName());
 				result.setExpirationDate(rs.getString("expiration_date"));
 				result.setFirstName(rs.getString("first_name"));
 				result.setLastName(rs.getString("last_name"));
@@ -66,6 +67,20 @@ public class BankAccountDao {
 		}
 		
 		return result;
+	}
+
+	public static void updateBankAccountStatus(Integer bankAccountId, boolean selectedValue) {
+		Connection conn=DBConnection.getConnection();
+		try {
+			 PreparedStatement st = conn.prepareStatement("UPDATE bank_account SET active = ? WHERE bank_account_id = ?");
+			 st.setBoolean(1, selectedValue);
+			 st.setInt(2, bankAccountId);
+			 st.executeUpdate();
+			 st.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

@@ -15,4 +15,9 @@ public class BankAccountBean implements Serializable{
 	public List<BankAccountDto> getAllBankAccounts(){
 		return BankAccountDao.getAllBankAccounts();
 	}
+
+
+	public void setStatus(String bankAccountId, String selectedValue) {
+		BankAccountDao.updateBankAccountStatus(Integer.valueOf(bankAccountId),selectedValue=="1");
+	}
 }

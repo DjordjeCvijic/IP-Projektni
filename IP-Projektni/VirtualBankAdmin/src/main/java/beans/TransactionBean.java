@@ -1,6 +1,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class TransactionBean implements Serializable{
 			transactionToDisplay.setCardNumber(bankAccountDto.getCardNumber());
 			transactionToDisplay.setFirstName(bankAccountDto.getFirstName());
 			transactionToDisplay.setLastName(bankAccountDto.getLastName());
-			transactionToDisplay.setTime(element.getTime());
+			transactionToDisplay.setTime(new SimpleDateFormat("HH:mm:ss dd/MM/yyyy").format(element.getTime()));
 			transactionToDisplay.setTransactionId(element.getTransactionId());
 			
 			

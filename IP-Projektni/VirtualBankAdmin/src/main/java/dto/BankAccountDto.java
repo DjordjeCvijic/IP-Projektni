@@ -14,6 +14,7 @@ public class BankAccountDto implements Serializable {
 	private Integer pinNumber;
 	private String cardType;
 	private Double accountBalance;
+	private boolean active;
 	public Integer getBankAccountId() {
 		return bankAccountId;
 	}
@@ -61,6 +62,12 @@ public class BankAccountDto implements Serializable {
 	}
 	public void setAccountBalance(Double accountBalance) {
 		this.accountBalance = accountBalance;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 	

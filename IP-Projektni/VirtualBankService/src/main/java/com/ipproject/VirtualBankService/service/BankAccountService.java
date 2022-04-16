@@ -40,24 +40,28 @@ public class BankAccountService {
 					paymentRequestDto.getExpirationDate().equals(bankAccount.getExpirationDate()) &&
 					paymentRequestDto.getPin().doubleValue()==bankAccount.getPinNumber().doubleValue()
 					) {
-				if(bankAccount.getAccountBalance()-paymentRequestDto.getAmount()>=0) {
-					
-					sendData(paymentRequestDto);
-					bankAccount.setAccountBalance(bankAccount.getAccountBalance()-paymentRequestDto.getAmount());
-					BankAccount savedBankAccount= bankAccountRepository.save(bankAccount);
-					Transaction transaction=new Transaction();
-					transaction.setAmount(paymentRequestDto.getAmount());
-					transaction.setBankAccount(savedBankAccount);
-					transaction.setTime(LocalDateTime.now());
-					transactionService.saveTransaction(transaction);
-					return new PaymentResponseDto(1,"Payment successful");
-					
-					
-					
+				if(bankAccount.isActive()){
+					if(bankAccount.getAccountBalance()-paymentRequestDto.getAmount()>=0) {
+						
+						sendData(paymentRequestDto);
+						bankAccount.setAccountBalance(bankAccount.getAccountBalance()-paymentRequestDto.getAmount());
+						BankAccount savedBankAccount= bankAccountRepository.save(bankAccount);
+						Transaction transaction=new Transaction();
+						transaction.setAmount(paymentRequestDto.getAmount());
+						transaction.setBankAccount(savedBankAccount);
+						transaction.setTime(LocalDateTime.now());
+						transactionService.saveTransaction(transaction);
+						return new PaymentResponseDto(1,"Payment successful");
+						
+						
+					}else {
+						return new PaymentResponseDto(2,"You don't have enough money in your account");
+					}
 					
 				}else {
-					return new PaymentResponseDto(2,"You don't have enough money in your account");
+					return new PaymentResponseDto(2,"Your bank account is blocked");
 				}
+				
 				
 			}else {
 				return new PaymentResponseDto(2,"Data are incorrect!");
