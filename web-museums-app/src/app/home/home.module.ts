@@ -14,6 +14,8 @@ import { UsersInfoComponent } from './users-info/users-info.component';
 import { BuyTicketModalComponent } from '../buy-ticket-modal/buy-ticket-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { VirtualToursComponent } from './virtual-tours/virtual-tours.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { VideoPlayerComponent } from './video-player/video-player.component';
 
 
 
@@ -26,6 +28,7 @@ import { VirtualToursComponent } from './virtual-tours/virtual-tours.component';
     VirtualTourCardComponent,
     UsersInfoComponent,
     VirtualToursComponent,
+    VideoPlayerComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,8 @@ import { VirtualToursComponent } from './virtual-tours/virtual-tours.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgChartsModule,
-    MatDialogModule
+    MatDialogModule,
+    YouTubePlayerModule
   ],
   entryComponents:[
     BuyTicketModalComponent

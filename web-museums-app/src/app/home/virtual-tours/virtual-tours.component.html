@@ -11,6 +11,6 @@
         </div>
     </div>
     <div class="second-column">
-        
+        <app-video-player [videoId]="videoToShow" [videoTitle]="title" *ngIf="videoToShow!=''"></app-video-player>
     </div>
 </div>

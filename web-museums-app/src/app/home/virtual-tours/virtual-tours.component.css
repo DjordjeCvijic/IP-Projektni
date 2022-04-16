@@ -11,8 +11,6 @@
 .first-column {
   display: flex;
   flex-direction: column;
-  border: red solid;
-  /* width: 34%; */
   overflow-y: auto;
   height: 500px;
 }
@@ -20,8 +18,9 @@
 .second-column {
   display: flex;
   flex-direction: column;
-  border: green solid;
   width: 65%;
+  align-items: center;
+  border: solid;
 }
 
 .virtual-tour-card {
@@ -46,8 +45,4 @@ p {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 13px;
   font-weight: 800;
-}
-
-.info {
-  color: rgb(38, 54, 199);
 }

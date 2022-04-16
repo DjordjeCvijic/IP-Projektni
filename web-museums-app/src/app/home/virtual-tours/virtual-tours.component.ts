@@ -11,6 +11,8 @@ import { VirtualTourService } from '../services/virtual-tour.service';
 export class VirtualToursComponent implements OnInit {
 
   public virtualTourList:Array<VirtualTour>=[];
+  public videoToShow:string="";
+  public title:string="";
   constructor(private localStorageService:LocalStorageService,
     private virtualTourService:VirtualTourService
     ) { }
@@ -31,7 +33,11 @@ export class VirtualToursComponent implements OnInit {
   }
 
   showVirtualTour(virtualTourId:number){
-    console.log("pusti video",virtualTourId)
+    var virtualTour:VirtualTour;
+    this.virtualTourList.forEach(element=>{if(element.virtualTourId==virtualTourId)virtualTour=element;})
+    const params = new URL(virtualTour!.youtubeUrl.toString()).searchParams;
+    this.videoToShow = params.get('v')!;
+    this.title=virtualTour!.name.toString();
   }
 
 }
