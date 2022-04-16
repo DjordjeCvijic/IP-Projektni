@@ -26,11 +26,9 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter{
     JwtRequestFilter jwtRequestFilter;
     
   String[] adminPermissionsList = {"/movie-people/**", "/content/**"};
-  String[] userPermissionsList = {"/test/user","/test/user-id","/content/movie-by-genre"};
-  String[] userAndAminPermissionsList = {"/content-comment/**", "/review/**", "/genre/getAll",
-          "/user-person/update-info"};
+  String[] userAndAminPermissionsList = {"/museum/**"};
   String[] swaggerPermissionsList = {"/swagger-ui/*", "/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**"};
-  String[] permissionsForAllList = {"/auth/**","/test","/auth/login","/museum/**","/virtual-tour/**","/user-info/**","/virtual-tour-ticket/**"};
+  String[] permissionsForAllList = {"/auth/**","/test","/auth/login","/virtual-tour/**","/user-info/**","/virtual-tour-ticket/**"};
 
   // authentication
   @Override
@@ -51,7 +49,6 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter{
 //              .antMatchers("/swagger-resources/**").permitAll()
               .antMatchers(swaggerPermissionsList).permitAll()
               .antMatchers(adminPermissionsList).hasRole("ADMIN")
-              .antMatchers(userPermissionsList).hasAnyRole("USER")
               .antMatchers(userAndAminPermissionsList).hasAnyRole("USER", "ADMIN")
               .anyRequest().authenticated()
               .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

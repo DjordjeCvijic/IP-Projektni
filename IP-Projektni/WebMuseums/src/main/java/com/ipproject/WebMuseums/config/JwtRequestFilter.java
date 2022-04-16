@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToUrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +16,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.ipproject.WebMuseums.service.UserActionService;
 import com.ipproject.WebMuseums.util.JwtUtil;
 
 @Component
@@ -25,6 +27,8 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 	
 	@Autowired
 	private JwtUtil jwtUtil;
+	@Autowired
+	private UserActionService userActionService;
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -49,8 +53,21 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 				SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 			}
 		}
+		
+		userActionService.saveUserAction(jwtUtil.extractUsername(jwt), getFullURL(request));
 		filterChain.doFilter(request, response);
 		
+	}
+	
+	private static String getFullURL(HttpServletRequest request) {
+	    StringBuilder requestURL = new StringBuilder(request.getRequestURL().toString());
+	    String queryString = request.getQueryString();
+
+	    if (queryString == null) {
+	        return requestURL.toString();
+	    } else {
+	        return requestURL.append('?').append(queryString).toString();
+	    }
 	}
 
 }
