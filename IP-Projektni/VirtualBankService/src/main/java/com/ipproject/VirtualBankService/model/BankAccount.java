@@ -48,6 +48,9 @@ public class BankAccount {
 	@Column(name = "account_balance")
 	private Double accountBalance;
 	
+	@Column(name = "active")
+	private boolean active;
+	
 	@ManyToOne
 	@JoinColumn(name = "card_type_id",nullable = false)
 	private CardType cardType;

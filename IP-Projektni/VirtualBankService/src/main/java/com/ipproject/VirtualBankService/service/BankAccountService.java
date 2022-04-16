@@ -2,6 +2,7 @@ package com.ipproject.VirtualBankService.service;
 
 
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import com.ipproject.VirtualBankService.dto.PaymentRequestDto;
 import com.ipproject.VirtualBankService.dto.PaymentResponseDto;
 import com.ipproject.VirtualBankService.model.BankAccount;
+import com.ipproject.VirtualBankService.model.Transaction;
 import com.ipproject.VirtualBankService.repository.BankAccountRepository;
 
 @Service
@@ -24,6 +26,8 @@ public class BankAccountService {
 	
 	@Autowired
 	private BankAccountRepository bankAccountRepository;
+	@Autowired
+	private TransactionService transactionService;
 
 	public PaymentResponseDto payment(PaymentRequestDto paymentRequestDto) {
 
@@ -39,21 +43,28 @@ public class BankAccountService {
 				if(bankAccount.getAccountBalance()-paymentRequestDto.getAmount()>=0) {
 					
 					sendData(paymentRequestDto);
-					return new PaymentResponseDto(1,"Uplata uspijesna");
-					//ovdje treba updatovati racun sa smanjenim iznosom
+					bankAccount.setAccountBalance(bankAccount.getAccountBalance()-paymentRequestDto.getAmount());
+					BankAccount savedBankAccount= bankAccountRepository.save(bankAccount);
+					Transaction transaction=new Transaction();
+					transaction.setAmount(paymentRequestDto.getAmount());
+					transaction.setBankAccount(savedBankAccount);
+					transaction.setTime(LocalDateTime.now());
+					transactionService.saveTransaction(transaction);
+					return new PaymentResponseDto(1,"Payment successful");
+					
 					
 					
 					
 				}else {
-					return new PaymentResponseDto(2,"Nema dovoljno na racunu");
+					return new PaymentResponseDto(2,"You don't have enough money in your account");
 				}
 				
 			}else {
-				return new PaymentResponseDto(2,"Podaci nisu validni");
+				return new PaymentResponseDto(2,"Data are incorrect!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new PaymentResponseDto(2,"Podaci nisssssssss validni");
+			return new PaymentResponseDto(2,"Data are incorrect!");
 		}
 		
 	}
