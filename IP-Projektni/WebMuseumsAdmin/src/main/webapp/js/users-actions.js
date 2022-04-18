@@ -3,5 +3,5 @@ function goBack(){
 }
 
 function downloadUsersActions(){
-	console.log(skidanje akcija);
+	console.log("skidanje akcija");
 }
