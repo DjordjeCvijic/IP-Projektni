@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Virtual tours</title>
 <link href="styles/museum.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/museum.js"></script>
 </head>
@@ -24,7 +24,7 @@
 	
 	<div class="header-div">
 		<p>Virtual tours :</p>
-		<button class="btn" onClick="addVirtualTour(<%= request.getParameter("id") %>)">Add virtual toure</button>
+		<button class="btn" onClick="addVirtualTour(<%= request.getParameter("id") %>)">Add virtual tour</button>
 	</div>
 	<div class="list-div">
 		<%for(VirtualTourBean tourBean:VirtualTourService.getAllVirtualToursInMuseum(request.getParameter("id"))) {%>

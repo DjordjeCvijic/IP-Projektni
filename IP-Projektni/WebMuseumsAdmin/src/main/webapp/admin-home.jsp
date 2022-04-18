@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Home</title>
 <link href="styles/style.css" type="text/css" rel="stylesheet">
 <script src="js/admin-home.js" type="text/javascript"></script>
 
@@ -53,7 +53,7 @@
 			<td><%= museum.getLongitude()%></td>
 			<td><%= museum.getPhoneNumber()%></td>
 			<td><%= museum.getMuseumTypeName()%></td>
-			<td><button onClick="showMuseum(<%= museum.getMuseumId()%>)" >Detalji</button></td>
+			<td><button onClick="showMuseum(<%= museum.getMuseumId()%>)" >Details</button></td>
 		</tr>
 		<%} %>
 	</table>

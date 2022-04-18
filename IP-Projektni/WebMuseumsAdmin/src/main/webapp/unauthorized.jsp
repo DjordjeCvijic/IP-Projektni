@@ -4,11 +4,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Warning</title>
+<link href="styles/unauthorized.css" type="text/css" rel="stylesheet">
+
+
 </head>
 <body>
 
-ne mozete ovo korsititi
+<div class="main-div">
+   402
+   <div class="txt">
+      Unauthorized
+   </div>
+</div>
 
 </body>
 </html>

@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Users</title>
 <link href="styles/users.css" type="text/css" rel="stylesheet">
 <script src="js/users.js" type="text/javascript"></script>
 </head>

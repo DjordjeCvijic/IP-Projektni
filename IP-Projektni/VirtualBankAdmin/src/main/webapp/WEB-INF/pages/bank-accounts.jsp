@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Bank accounts</title>
 <link href="styles/bank-accounts.css" type="text/css" rel="stylesheet">
 <script src="js/bank-accounts.js" type="text/javascript"></script>
 </head>

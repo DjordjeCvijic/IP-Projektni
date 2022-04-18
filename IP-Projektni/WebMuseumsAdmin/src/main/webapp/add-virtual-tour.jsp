@@ -43,6 +43,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<title>Add virtual tour</title>
 <link href="styles/add-page-style.css" rel="stylesheet">
 </head>
 <body>

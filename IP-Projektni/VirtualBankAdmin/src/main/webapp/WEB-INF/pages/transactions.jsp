@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Transactions</title>
 <link href="styles/transactions.css" type="text/css" rel="stylesheet">
 <script src="js/transactions.js" type="text/javascript"></script>
 </head>
