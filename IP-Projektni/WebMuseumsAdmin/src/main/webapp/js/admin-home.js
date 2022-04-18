@@ -5,10 +5,14 @@ function showMuseum(id){
 }
 
 function addMuseum(){
-	console.log("sss");
+	
 	window.location.assign("add-museum.jsp");
 
 }
 function openUsersAdministrationPage(){
 	window.location.assign("users.jsp");
+}
+
+function openUsersActionsPage(){
+	window.location.assign("users-actions.jsp");
 }

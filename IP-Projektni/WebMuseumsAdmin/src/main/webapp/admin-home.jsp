@@ -21,7 +21,8 @@
 
 </head>
 <body>
-<button class="btn" onClick="openUsersAdministrationPage()">Users</button>
+<button class="btn" onClick="openUsersAdministrationPage()">Users</button> <br>
+<button class="btn" onClick="openUsersActionsPage()">Users actions</button>
 <div class="main-div">
 	<div class="header-div">
 		<p>Museums :</p>
