@@ -36,16 +36,16 @@ public class WebMuseumsApplication {
 	        }
 	    }
 	  
-	   @Bean
-	    public WebMvcConfigurer corsConfigurer() {
-	        return new WebMvcConfigurerAdapter() {
-	            @Override
-	            public void addCorsMappings(CorsRegistry registry) {
-	                registry.addMapping("/**");
-	            }
-	        };
-	    }
-	   
+//	   @Bean
+//	    public WebMvcConfigurer corsConfigurer() {
+//	        return new WebMvcConfigurerAdapter() {
+//	            @Override
+//	            public void addCorsMappings(CorsRegistry registry) {
+//	                registry.addMapping("/**");
+//	            }
+//	        };
+//	    }
+//	   
 	   @Bean
 		public RestTemplate restTemplate(RestTemplateBuilder builder) {
 			return builder.build();

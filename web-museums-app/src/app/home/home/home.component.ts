@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   public logout(){
     this.authService.logOut();
-    this.snackBar.open("izlogovani ste",undefined,{duration:2000});
+    this.snackBar.open("You are logged out",undefined,{duration:1000});
   }
   public openAdminApp(){
     window.open(AppConst.ADMIN_APP_URL+"?token="+this.localStorageService.getUserTokenFromLocalStorage(), "_blank");

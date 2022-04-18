@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConst } from 'src/app/app_const';
 import { LocalStorageService } from 'src/app/global-services/local-storage.service';
@@ -13,10 +13,20 @@ export class MuseumService {
   constructor(private http:HttpClient,private localStorageService:LocalStorageService) { }
 
   public getAllMuseums(){
-    return this.http.get<Array<Museum>>(AppConst.API_ENDPOINT+"/museum/get-all");
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+this.localStorageService.getUserTokenFromLocalStorage(),
+    }
+    );
+    return this.http.get<Array<Museum>>(AppConst.API_ENDPOINT+"/museum/get-all",{ headers: headers });
   }
 
   public getMuseumWithVirtualTour(museumId:number){
-    return this.http.get<MuseumWithVirtualTours>(AppConst.API_ENDPOINT+"/museum?museumId="+museumId+"&userId="+this.localStorageService.getUserIdFromToken());
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+this.localStorageService.getUserTokenFromLocalStorage(),
+    })
+    return this.http.get<MuseumWithVirtualTours>(AppConst.API_ENDPOINT+"/museum?museumId="+museumId+"&userId="+this.localStorageService.getUserIdFromToken(),{ headers: headers });
   }
 }

@@ -18,6 +18,6 @@ public class BankAccountBean implements Serializable{
 
 
 	public void setStatus(String bankAccountId, String selectedValue) {
-		BankAccountDao.updateBankAccountStatus(Integer.valueOf(bankAccountId),selectedValue=="1");
+		BankAccountDao.updateBankAccountStatus(Integer.valueOf(bankAccountId),selectedValue.equals("1"));
 	}
 }
