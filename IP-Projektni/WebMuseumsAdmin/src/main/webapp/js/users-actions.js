@@ -4,4 +4,5 @@ function goBack(){
 
 function downloadUsersActions(){
 	console.log("skidanje akcija");
+	window.location.assign("download.jsp");
 }

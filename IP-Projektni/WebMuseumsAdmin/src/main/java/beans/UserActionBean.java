@@ -52,5 +52,8 @@ public class UserActionBean  implements Serializable{
 		this.username = username;
 	}
 	
+	public String toString() {
+		return time+" "+firstName+" "+lastName+" "+username+" "+action+"\n";
+	}
 	
 }

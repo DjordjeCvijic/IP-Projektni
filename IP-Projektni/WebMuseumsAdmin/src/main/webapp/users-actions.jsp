@@ -1,11 +1,13 @@
 <%@ page import="service.UserActionService" %>
 <%@ page import="beans.UserActionBean" %>
+<%@ page import="java.io.*,java.util.*" %> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <jsp:useBean id="userBean" class="beans.UserBean" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <%
 	if(!(userBean.isLoggedIn())) response.sendRedirect("unauthorized.jsp");
+
 
 %>
 <html>
@@ -31,8 +33,6 @@
 				<th>Last name</th>
 				<th>Username</th>
 				<th>Action</th>
-				
-				
 				
 			</tr>
 			<% for(UserActionBean userAction:UserActionService.getUsersActions()){ %>
