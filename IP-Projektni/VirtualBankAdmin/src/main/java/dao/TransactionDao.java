@@ -7,7 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import dto.BankAccountDto;
-import dto.DBConnection;
 import dto.TransactionDto;
 
 public class TransactionDao {

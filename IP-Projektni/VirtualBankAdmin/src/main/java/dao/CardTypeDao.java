@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import dto.CardTypeDto;
-import dto.DBConnection;
 
 public class CardTypeDao {
 
