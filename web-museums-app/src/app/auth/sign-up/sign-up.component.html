@@ -17,12 +17,11 @@
             <input matInput type="password" placeholder="Password" formControlName="firstPassword" required>
         </mat-form-field>
         <mat-form-field >
-            <input matInput type="password" placeholder="Repete password" formControlName="secondPassword" required>
+            <input matInput type="password" placeholder="Repeat password" formControlName="secondPassword" required>
         </mat-form-field> 
         <button class="button" mat-button [disabled]="form.invalid" (click)="singUp(form)">Sing up</button>
-       
-          
     </form>
-
+    <p>*Username: At least 12 characters without @,# or /</p>
+    <p>*Password: At least 15 characters with required lowercase and uppercase letters as well as numbers</p>
 
 </div>
