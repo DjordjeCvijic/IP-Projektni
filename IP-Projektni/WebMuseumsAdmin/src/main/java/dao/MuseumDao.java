@@ -22,6 +22,7 @@ public class MuseumDao {
 			
 			ResultSet rs=st.executeQuery("SELECT * FROM museum");
 			while(rs.next()) {
+				
 				MuseumDto museum=new MuseumDto();
 				museum.setMuseumId(rs.getInt("museum_id"));
 				museum.setCityName(rs.getString("city_name"));

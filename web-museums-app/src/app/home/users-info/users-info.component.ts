@@ -23,7 +23,7 @@ export class UsersInfoComponent implements OnInit {
       title: {
         fullSize:true,
         display: true,
-        text: 'Login statistic',
+        text: "Number of users in the last 24 hour",
       },
       legend: {
         display: false
@@ -56,7 +56,7 @@ export class UsersInfoComponent implements OnInit {
            {
              data: this.chartData,
              backgroundColor: ["#7DB7F0"],
-             hoverBackgroundColor: ["#1e90ff"]
+             //hoverBackgroundColor: ["#1e90ff"]
 
            }
          ]

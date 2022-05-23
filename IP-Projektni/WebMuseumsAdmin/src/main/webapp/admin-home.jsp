@@ -1,7 +1,7 @@
 <%@ page import="service.MuseumService" %>
 <%@ page import="beans.MuseumBean" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
  
  <jsp:useBean id="userBean" class="beans.UserBean" scope="session"></jsp:useBean>
  
@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta >
 <title>Home</title>
 <link href="styles/style.css" type="text/css" rel="stylesheet">
 <script src="js/admin-home.js" type="text/javascript"></script>
