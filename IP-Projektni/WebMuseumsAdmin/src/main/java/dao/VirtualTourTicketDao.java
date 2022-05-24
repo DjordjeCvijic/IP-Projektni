@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class VirtualTourTicketDao {
 	
 	public static void deleteVirtualTourTicketByVirtualTourId(Integer virtualTourId) {
-		System.out.println("OBRISI: "+virtualTourId);
+		
 	Connection conn=DBConnection.getConnection();
 		
 		try {

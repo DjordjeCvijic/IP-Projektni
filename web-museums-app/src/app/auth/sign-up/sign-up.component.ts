@@ -35,7 +35,6 @@ export class SignUpComponent implements OnInit {
     if(form.value.firstPassword!=form.value.secondPassword){
       this.snackBar.open("Please enter identical passwords",undefined,{duration:2000})
     }else{
-      console.log("proslo");
       this.authService.singUp(form.value.firstName,form.value.lastName,form.value.username,form.value.email,form.value.firstPassword).subscribe({
       next:data=>{
         if(data.status=="2"){

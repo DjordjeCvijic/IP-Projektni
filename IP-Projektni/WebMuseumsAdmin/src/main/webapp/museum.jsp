@@ -1,4 +1,5 @@
 <%@page import="service.VirtualTourService" %>
+<%@page import="service.MuseumService" %>
 <%@page import="beans.VirtualTourBean" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -10,8 +11,12 @@
 <%
 	if(!(userBean.isLoggedIn())) response.sendRedirect("unauthorized.jsp");
 	if(request.getParameter("deleteVirtualTourId")!=null){
-		System.out.print("obrisi turuaaaa "+ Integer.valueOf(request.getParameter("deleteVirtualTourId")));
 		VirtualTourService.deleteVirtualTourById(Integer.valueOf(request.getParameter("deleteVirtualTourId")));
+	}
+	if(request.getParameter("deleteMuseum")!=null){
+		
+		MuseumService.deleteMuseumById(Integer.valueOf(request.getParameter("id")));
+		response.sendRedirect("admin-home.jsp");
 	}
 
 %>
@@ -24,6 +29,8 @@
 </head>
 <body>
 <button class="btn" onClick="returnToAdminHome()">Back</button>
+<br/>
+<button class="btn" onClick="deleteMuseum(<%= request.getParameter("id") %>)">Delete museum</button>
 <div class="main-div">
 	
 	<div class="header-div">

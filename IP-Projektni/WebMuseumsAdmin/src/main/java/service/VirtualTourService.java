@@ -42,7 +42,6 @@ public class VirtualTourService {
 	
 	public static void deleteVirtualTourById(Integer id) {
 			//prvo mora obrisati karte za ovu turu 
-		System.out.print("obrisi turu "+ id);
 		VirtualTourTicketService.deleteVirtualTourTicketByVirtualTourId(id);
 		VirtualTourDao.deleteVirtualTourById(id);
 	}

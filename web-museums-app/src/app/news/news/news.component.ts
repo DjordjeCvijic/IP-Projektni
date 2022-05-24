@@ -49,7 +49,6 @@ export class NewsComponent implements OnInit {
                   throw err;
               }
             for(let i=0;i<result.rss.channel[0].item.length;i++){
-              // console.log(result.rss.channel[0].item[i].title[0].trim());//naslov
               this.newsData.push(new News(
                 result.rss.channel[0].item[i].title[0].trim(),
                 result.rss.channel[0].item[i].link[0],
@@ -58,7 +57,7 @@ export class NewsComponent implements OnInit {
                 result.rss.channel[0].item[i].pubDate[0]
               ));
             }
-             console.log(result.rss.channel[0].item[0].pubDate[0]);//datum objavljivanja
+            
 
           });
       }

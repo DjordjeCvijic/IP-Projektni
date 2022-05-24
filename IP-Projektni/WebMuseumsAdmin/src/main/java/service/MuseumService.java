@@ -14,8 +14,10 @@ import org.json.JSONObject;
 import beans.MuseumBean;
 import dao.MuseumDao;
 import dao.MuseumTypeDao;
+import dao.VirtualTourDao;
 import dto.MuseumDto;
 import dto.MuseumTypeDto;
+import dto.VirtualTourDto;
 
 public class MuseumService {
 	
@@ -48,13 +50,14 @@ public class MuseumService {
 		MuseumDto museumDto=new MuseumDto();
 		museumDto.setAddress(museumBean.getAddress());
 		museumDto.setCityName(museumBean.getCityName());
-		museumDto.setCountryName(getCountryNameByCode(museumBean.getCountryName()));//problem
+		museumDto.setCountryName(getCountryNameByCode(museumBean.getCountryName()));
 		museumDto.setLatitude(museumBean.getLatitude());
 		museumDto.setLongitude(museumBean.getLongitude());
 		museumDto.setMuseumTypeId(Integer.valueOf(museumBean.getMuseumTypeName()));
 		museumDto.setName(museumBean.getName());
 		museumDto.setPhoneNumber(museumBean.getPhoneNumber());
-		MuseumDao.addMuseum(museumDto);
+		
+			MuseumDao.addMuseum(museumDto);
 	}
 
 
@@ -88,5 +91,19 @@ public class MuseumService {
 		System.out.println(result);
 		return result;
 	}
+	public static void deleteMuseumById(Integer museumId) {
+		
+		//prvo treba dohvatiti ideve svih tura u muzeju
+		List<VirtualTourDto>virtualToursInMuseum=VirtualTourDao.getVirtualToursOfMuseum(museumId);
+		//prvo mora obrisati karte za ovu turu 
+		for(VirtualTourDto virtualTour: virtualToursInMuseum) {
+			VirtualTourTicketService.deleteVirtualTourTicketByVirtualTourId(virtualTour.getVirtualTourId());
+			VirtualTourDao.deleteVirtualTourById(virtualTour.getVirtualTourId());
+		}
+		MuseumDao.deleteMuseumById(museumId);
+		
+	
+	
+}
 	
 }

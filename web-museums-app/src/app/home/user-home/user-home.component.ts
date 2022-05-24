@@ -30,15 +30,12 @@ export class UserHomeComponent implements OnInit {
   }
 
   public filter(){
-    console.log("broj podataka ",this.loginCount.length);
     if(this.form.value.museumNameField != null){
-      console.log("postoji naziv muzeja");
       this.museumsToShow=this.museums.filter((element, index, array)=>{
         return element.name.toLowerCase().includes(this.form.value.museumNameField);
       });
     }
     if(this.form.value.locationField != null){
-      console.log("postoji lokaicja muzeja");
       this.museumsToShow=this.museumsToShow.filter((element, index, array)=>{
         return element.cityName.toLowerCase().includes(this.form.value.locationField);
       });

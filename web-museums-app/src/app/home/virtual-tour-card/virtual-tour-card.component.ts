@@ -24,7 +24,6 @@ export class VirtualTourCardComponent implements OnInit {
     })
       .afterClosed()
       .subscribe(result => {
-       console.log("resltat :",result)
        if(result){
          this.virtualTour.purchasedByUser=true;
        }

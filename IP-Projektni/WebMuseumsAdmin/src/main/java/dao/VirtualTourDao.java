@@ -77,7 +77,7 @@ public class VirtualTourDao {
 				
 				 PreparedStatement pstmt = conn.prepareStatement("DELETE FROM virtual_tour WHERE virtual_tour_id=?");
 				 pstmt.setInt(1, virtualTourId);
-				 pstmt.executeQuery();
+				 pstmt.executeUpdate();
 				 pstmt.close();
 	    
 			} catch (SQLException e) {

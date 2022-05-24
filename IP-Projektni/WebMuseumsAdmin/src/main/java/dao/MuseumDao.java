@@ -66,12 +66,26 @@ public class MuseumDao {
 			
 			preparedStatement.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
 		
+	}
+	public static void deleteMuseumById(Integer museumId) {
+		Connection conn=DBConnection.getConnection();
+			
+			try {
+				
+				 PreparedStatement pstmt = conn.prepareStatement("DELETE FROM museum WHERE museum_id=?");
+				 pstmt.setInt(1, museumId);
+				 pstmt.executeUpdate();
+				 pstmt.close();
+	    
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
 	}
 
 }

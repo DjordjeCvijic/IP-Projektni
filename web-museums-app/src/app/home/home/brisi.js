@@ -23,7 +23,6 @@ function getCountry(){
 
 function getRegion(){
     selectedCountry = document.getElementById("country_select").value;
-   console.log("usao u get refion od zemlje",selectedCountry);
 
    var request=new XMLHttpRequest();
    request.onreadystatechange=function(){
