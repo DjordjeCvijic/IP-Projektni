@@ -36,19 +36,19 @@ export class SignUpComponent implements OnInit {
       this.snackBar.open("Please enter identical passwords",undefined,{duration:2000})
     }else{
       console.log("proslo");
-    //   this.authService.singUp(form.value.firstName,form.value.lastName,form.value.username,form.value.email,form.value.firstPassword).subscribe({
-    //   next:data=>{
-    //     if(data.status=="2"){
-    //       this.snackBar.open("Username already taken",undefined,{duration:2000})
-    //     }else if(data.status=="3"){
-    //       this.snackBar.open("Email already taken",undefined,{duration:2000})
-    //     }else if(data.status=="1"){
-    //       this.snackBar.open("You have successfully signed up",undefined,{duration:2000});
-    //       this.router.navigate(["auth/login"]);
-    //     }
-    //   }
-    // }
-    // )
+      this.authService.singUp(form.value.firstName,form.value.lastName,form.value.username,form.value.email,form.value.firstPassword).subscribe({
+      next:data=>{
+        if(data.status=="2"){
+          this.snackBar.open("Username already taken",undefined,{duration:2000})
+        }else if(data.status=="3"){
+          this.snackBar.open("Email already taken",undefined,{duration:2000})
+        }else if(data.status=="1"){
+          this.snackBar.open("You have successfully signed up",undefined,{duration:2000});
+          this.router.navigate(["auth/login"]);
+        }
+      }
+    }
+    )
   }
  
   }

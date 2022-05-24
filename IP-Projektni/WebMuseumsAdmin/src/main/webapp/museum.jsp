@@ -9,6 +9,10 @@
 <!DOCTYPE html>
 <%
 	if(!(userBean.isLoggedIn())) response.sendRedirect("unauthorized.jsp");
+	if(request.getParameter("deleteVirtualTourId")!=null){
+		System.out.print("obrisi turuaaaa "+ Integer.valueOf(request.getParameter("deleteVirtualTourId")));
+		VirtualTourService.deleteVirtualTourById(Integer.valueOf(request.getParameter("deleteVirtualTourId")));
+	}
 
 %>
 <html>
@@ -32,7 +36,7 @@
 				<h4>Name: <%= tourBean.getName() %></h4>
 				<h4>Duration: <%= tourBean.getDuration() %></h4>
 				<h4>Start: <%= tourBean.getStartDateTime()%></h4>
-				<button class="btn" onClick="deleteVirtualTour(<%=request.getParameter("id") %>,<%= tourBean.getVirtualTourId() %>)">delete</button>
+				<button class="btn" onClick="deleteVirtualTour(<%=request.getParameter("id") %>,<%= tourBean.getVirtualTourId() %>)">Delete</button>
 		</div>
 	
 		<%} %>

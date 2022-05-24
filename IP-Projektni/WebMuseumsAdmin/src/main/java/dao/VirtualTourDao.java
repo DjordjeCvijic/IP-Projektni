@@ -69,5 +69,20 @@ public class VirtualTourDao {
 		}
 		
 	}
-
+	
+	public static void deleteVirtualTourById(Integer virtualTourId) {
+		Connection conn=DBConnection.getConnection();
+			
+			try {
+				
+				 PreparedStatement pstmt = conn.prepareStatement("DELETE FROM virtual_tour WHERE virtual_tour_id=?");
+				 pstmt.setInt(1, virtualTourId);
+				 pstmt.executeQuery();
+				 pstmt.close();
+	    
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+	}
 }

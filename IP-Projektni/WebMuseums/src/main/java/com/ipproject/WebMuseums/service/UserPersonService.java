@@ -40,6 +40,7 @@ public class UserPersonService {
 	}
 
     public UserPersonResponseDto saveUserPerson(UserPersonDto userPersonDto) {
+    	System.out.println("uslo u registraciju");
     	//1 ok,2 usernamealready exists,3 email already exists 
     	if(userPersonRepository.countByUsername(userPersonDto.getUsername())!=0) {
     		return new UserPersonResponseDto("2",false);

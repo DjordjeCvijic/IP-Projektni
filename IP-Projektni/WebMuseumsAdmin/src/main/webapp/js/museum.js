@@ -3,8 +3,7 @@ function addVirtualTour(museumId){
 }
 
 function deleteVirtualTour(museumId,virtualTourId){
-	window.location.assign("museum.jsp?id="+museumId+"&delete="+virtualTourId);
-	//treba dodati da se na stranici prepozna ovo i pozove servis za brisanje virtuelne posjete
+	window.location.assign("museum.jsp?id="+museumId+"&deleteVirtualTourId="+virtualTourId);
 }
 function returnToAdminHome(){
 	window.location.assign("admin-home.jsp");

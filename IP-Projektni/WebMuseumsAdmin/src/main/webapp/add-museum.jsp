@@ -35,7 +35,7 @@
 				||"".equals(request.getParameter("longitude"))
 				||"".equals(request.getParameter("phoneNumber"))
 				||"".equals(request.getParameter("museum_type"))){
-			session.setAttribute("message", "sva polja nisu unesena");
+			session.setAttribute("message", "All fields must be filled");
 		}else{
 			session.setAttribute("message", "");			
 			

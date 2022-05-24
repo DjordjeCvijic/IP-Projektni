@@ -26,9 +26,6 @@ public class VirtualTourService {
 			result.add(bean);
 		});
 		
-		
-		
-		
 		return result;
 		
 		
@@ -41,6 +38,13 @@ public class VirtualTourService {
 		virtualTourDto.setStartDateTime(Timestamp.valueOf(bean.getStartDateTime()));
 		virtualTourDto.setYoutubeUrl(bean.getYoutubeUrl());
 		VirtualTourDao.saveVirtualTour(virtualTourDto);
+	}
+	
+	public static void deleteVirtualTourById(Integer id) {
+			//prvo mora obrisati karte za ovu turu 
+		System.out.print("obrisi turu "+ id);
+		VirtualTourTicketService.deleteVirtualTourTicketByVirtualTourId(id);
+		VirtualTourDao.deleteVirtualTourById(id);
 	}
 
 }
