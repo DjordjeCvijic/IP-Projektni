@@ -5,9 +5,7 @@ import java.sql.Timestamp;
 
 public class UserActionBean  implements Serializable{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private Integer userActionId;
 	private String action;

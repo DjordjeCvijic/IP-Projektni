@@ -79,8 +79,6 @@ public class UserPersonService {
 
 	private UserPerson buildUserFromDto(UserPersonDto userPersonDto) {
 		UserPerson userPerson = new UserPerson();
-//        if (userPersonDto.getUserPersonId() != null)
-//            userPerson.setUserPersonId(userPersonDto.getUserPersonId());
 
         userPerson.setFirstName(userPersonDto.getFirstName());
         userPerson.setLastName(userPersonDto.getLastName());

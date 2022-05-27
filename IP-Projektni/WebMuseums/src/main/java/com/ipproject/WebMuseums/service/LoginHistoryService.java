@@ -21,15 +21,12 @@ public class LoginHistoryService {
 	
 	public LoginHistory save(UserPerson user) {
 		List<LoginHistory> currentHourLogged=getCurrentHourLogged();
-		System.out.println("Ukupan broj u ovom satu "+currentHourLogged.size());
 
 		for(LoginHistory lh : currentHourLogged) {
 			if(lh.getUserPerson().getUserPersonId()==user.getUserPersonId()) {
-				System.out.println("nasao je da se vec ulogovao ovaj sat");
 				return lh;
 			}
 		}
-		System.out.println("nema poklapanja");
 		LoginHistory dataToSave=new LoginHistory();
 		dataToSave.setUserPerson(user);
 		dataToSave.setLoggedTime(LocalDateTime.now());
@@ -40,7 +37,6 @@ public class LoginHistoryService {
 
 	private List<LoginHistory> getCurrentHourLogged() {//vraca podatke o logovanju u trenutnom satu
 		LocalDateTime startOfHour=getStartOfHour();
-		System.out.println("pocetak sata "+startOfHour.toString());
 		return loginHistoryRepository.findAllByLoggedTimeBetween(startOfHour, LocalDateTime.now());
 	}
 	private LocalDateTime getStartOfHour() {

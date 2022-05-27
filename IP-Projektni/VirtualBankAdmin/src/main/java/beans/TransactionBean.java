@@ -17,7 +17,7 @@ public class TransactionBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	public List<TransactionToDisplay>getTransactions(){
-		List<TransactionToDisplay> result=new LinkedList();
+		List<TransactionToDisplay> result=new LinkedList<TransactionToDisplay>();
 		
 		List<TransactionDto> transactionDtoList=TransactionDao.getAllTransactions();
 		transactionDtoList.forEach(element->{

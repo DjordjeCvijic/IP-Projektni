@@ -19,11 +19,9 @@ public class UserDao {
 		Connection conn=DBConnection.getConnection();
 		
 		try {
-			//dohvatanje korisnika
 			 PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM user_person WHERE token=?");
 			 pstmt.setString(1, token);
 			 ResultSet rs=pstmt.executeQuery();
-			//ResultSet rs = stmt.executeQuery( "SELECT * FROM user_person " );
 			  while ( rs.next() ) {
 	           
 				  System.out.println(rs.getString("username"));
@@ -121,11 +119,9 @@ public class UserDao {
 		Connection conn=DBConnection.getConnection();
 		
 		try {
-			//dohvatanje korisnika
 			 PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM user_person WHERE user_person_id=?");
 			 pstmt.setInt(1, userId);
 			 ResultSet rs=pstmt.executeQuery();
-			//ResultSet rs = stmt.executeQuery( "SELECT * FROM user_person " );
 			  while ( rs.next() ) {
 	           
 			

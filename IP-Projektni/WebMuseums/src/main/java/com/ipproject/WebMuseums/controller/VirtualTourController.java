@@ -30,10 +30,7 @@ public class VirtualTourController {
 		return virtualTourService.getAll();
 	}
 	
-//	@PostMapping("/add")
-//	public VirtualTour addVirtualTour(@RequestBody VirtualTourRequestDto virtualTourRequestDto) {
-//		return virtualTourService.add(virtualTourRequestDto);
-//	}
+
 	
 	@GetMapping("/get-by-user")
 	public List<VirtualTourResponseDto>getAllByUser(@RequestParam("userId")Integer userId){

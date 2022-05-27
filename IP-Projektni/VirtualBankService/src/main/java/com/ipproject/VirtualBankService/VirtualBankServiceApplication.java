@@ -9,7 +9,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SpringBootApplication
 public class VirtualBankServiceApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(VirtualBankServiceApplication.class, args);
 	}

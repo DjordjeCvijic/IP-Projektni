@@ -25,10 +25,7 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter{
     @Autowired
     JwtRequestFilter jwtRequestFilter;
     
-//    String[] adminPermissionsList = {"/movie-people/**", "/content/**"};
-//    String[] userAndAminPermissionsList = {"/museum/**"};
-//    String[] swaggerPermissionsList = {"/swagger-ui/*", "/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**"};
-//    String[] permissionsForAllList = {"/auth/**","/test","/auth/login","/virtual-tour/**","/user-info/**","/virtual-tour-ticket/**"
+
   String[] adminPermissionsList = {"/user-info"};
   String[] userAndAminPermissionsList = {"/museum/**","/virtual-tour/**"};
   String[] swaggerPermissionsList = {"/swagger-ui/*", "/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**"};

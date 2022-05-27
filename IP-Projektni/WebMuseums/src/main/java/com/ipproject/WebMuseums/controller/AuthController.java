@@ -55,7 +55,7 @@ public class AuthController {
 	            throws Exception {
 		//1:uspijesno
 		//2:pogresni kredencijali
-		//3:nije odobreno ili blokirano,u 
+		//3:nije odobreno ili blokiran
 	        try {
 	            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 	                    authenticationRequest.getUsername(), authenticationRequest.getPassword()));

@@ -22,7 +22,6 @@ public class ScheduledTasks {
 	
 	@Scheduled(fixedRate = 60000)
 	public void scheduleTaskWithFixedRate() {
-	    System.out.println("Metoda za provjeru i obavjestavanje");
 	    List<VirtualTour> virtualToursThatStartInOneHour=virtualTourService.getVirtualToursThatStartInOneHour();
 	    for(VirtualTour virtualTour : virtualToursThatStartInOneHour) {
 	    	List<VirtualTourTicket> ticketListForVirtualTour=virtualTourTicketService.getAllTicketForVirtualTour(virtualTour);

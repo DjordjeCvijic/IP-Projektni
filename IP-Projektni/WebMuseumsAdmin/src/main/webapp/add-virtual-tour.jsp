@@ -61,7 +61,7 @@
 		<label >Time of start:</label>
 		<input type="time" name="time" />
 		
-		<input type="submit" name="submit" value="Add museum"/>
+		<input type="submit" name="submit" value="Add virtual tour"/>
 		<input type="submit" name="cancel" value="Cancel" style=" background-color:red"/>
 	</form>
 	<p><%=session.getAttribute("message").toString() %></p>

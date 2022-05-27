@@ -19,7 +19,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 @SpringBootApplication
 @EnableScheduling
 public class WebMuseumsApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(WebMuseumsApplication.class, args);
 	}

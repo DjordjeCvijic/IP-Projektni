@@ -46,7 +46,6 @@ public class UserService implements Serializable{
 	
 	
 	public static void saveUserStatus(String userId,String newStatusId) {
-		System.out.println("user "+userId+" new status "+newStatusId);
 		UserDao.updateUserStatus(Integer.valueOf(userId), Integer.valueOf(newStatusId));
 	}
 
