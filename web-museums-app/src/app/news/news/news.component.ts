@@ -28,7 +28,6 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataFromRSS();
-      //this.newsService.getNewsData();
       this.isAdmin=this.localStorageService.getUserIsAdminFromToken();
       this.loggedInUser=this.localStorageService.getUsernameFromToken();
   }

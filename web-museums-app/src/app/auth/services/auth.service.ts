@@ -41,7 +41,7 @@ export class AuthService {
     localStorage.removeItem(AppConst.TOKEN_STORAGE_KEY);
     localStorage.removeItem(AppConst.USER_ROLE_STORAGE_KEY);
      token=this.localStorageService.getUserTokenFromLocalStorage();
-    console.log("token2: ",token);
+    
 
   }
 
